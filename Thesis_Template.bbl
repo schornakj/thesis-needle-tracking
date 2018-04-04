@@ -21,10 +21,50 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Fedorov2012Slicer}Fedorov A., Beichel R., Kalpathy-Cramer J., Finet J., Fillion-Robin J-C., Pujol S., Bauer C., Jennings D., Fennessy F., Sonka M., Buatti J., Aylward S.R., Miller J.V., Pieper S., Kikinis R. 3D Slicer as an Image Computing Platform for the Quantitative Imaging Network. Magnetic Resonance Imaging. 2012 Nov;30(9):1323-41. PMID: 22770690. 
+
+\bibitem{WebsterModel}R. Webster, J. Kim, N. Cowan, G. Chirikjian and A. Okamura. 'Nonholonomic Modeling of Needle Steering.' The International Journal of Robotics Research. 2006.
+\href{https://limbs.lcsr.jhu.edu/wp-content/uploads/2013/05/Websternonholonomic2006.pdf}{link}
+
 \bibitem{Fischer2008_TMECH}
 G.~S. Fischer, I.~I. Iordachita, C.~Csoma, J.~Tokuda, S.~P. DiMaio, C.~M.
   Tempany, N.~Hata, and G.~Fichtinger, ``{MRI-Compatible Pneumatic Robot for
   Transperineal Prostate Needle Placement},'' \emph{IEEE/ASME Transactions on
   Mechatronics}, vol.~13, no.~3, 2008.
+\bibitem{ReedDynamics}K. Reed, A. Okamura, and N. Cowan. 'Modeling and Control of Needles With Torsional Friction.' Biomedical Engineering, 2008. IEEE Transactions on. IEEE, 2009.
+\href{http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5204199}{link}
+
+\bibitem{SwensenDynamics}J. Swensen, M. Lin, A. Okamura and N. Cowan. 'Torsional Dynamics of Steerable Needles: Modeling and Fluoroscopic Guidance.' Biomedical Engineering, 2014. IEEE Transactions on. IEEE, 2014.
+\href{http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6819455}{link}
+
+\bibitem{KallumGuidance}V. Kallem and N. Cowan. 'Image Guidance of Flexible Tip-Steerable Needles.' Robotics, 2009. IEEE Transactions on. IEEE, 2009.
+\href{http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4752793}{link}
+
+\bibitem{BiopsyReview}C. Weiss, S. Nour and J. Lewin. 'MRI-Guided Biopsy: A Review of Current Techniques and Applications.' Journal of Magnetic Resonance Imaging. 2008.
+\href{http://onlinelibrary.wiley.com/wol1/doi/10.1002/jmri.21270/full}{link}
+
+\bibitem{NeedleArtifactConfirmation}S. Song, N. Cho, I. Iordachita, P. Guion, G. Fichtinger and L. Whitcomb. 'A Study of Needle Image Artifact Localization in Confirmation Imaging of MRI-guided Robotic Prostate Biopsy.' IEEE International Conference on Robotics Automation. 2011.
+
+\bibitem{NeedleArtifactRobotic}S. Song, N. Cho, I. Iordachita, P. Guion, G. Fichtinger, A. Kaushai, K. Camphausen and L. Whitcomb. 'Biopsy Needle Artifact Localization in MRI-guided Robotic Transrectal Prostate Intervention.' IEEE Transactions on Biomedical Engineering. 2012.
+
+\bibitem{AIMNeedleSteering}N. Patel, T. van Katwijk, G. Li, P. Moreira, W. Shang, S. Misra and G. Fischer. 'Closed-loop Asymmetric-tip Needle Steering Under Continuous Intraoperative MRI Guidance.' IEEE. 2015.
+\href{http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7319484}{link}
+
+\bibitem{TokudaMRIGuidance}J. Tokuda, G. Fischer, S. DiMaio, D. Gobbi, C. Csoma, P. Mewes, G. Fichtinger, C. Tempany and N. Hata. 'Integrated Navigation and Control Software System for MRI-Guided Robotic Prostate Interventions.' Computerized Medical Imaging and Graphics. 2009.
+
+\bibitem{AIMSystemDevelopment}S. Eslami, W. Shang, G. Li, N. Patel, G. Fischer, J. Tokuda, N. Hata, C. Tempany and I. Iordachita. 'In-Bore Prostate Transperineal Interventions with an MRI-Guided Parallel Manipulator: System Development and Preliminary Evaluation.' The International Journal of Medical Robotics and Computer Assisted Surgery. 2015.
+
+\bibitem{BiopsyAccuracy}P. Blumenfield, N. Hata, S. DiMaio, K. Zou, S. Haker, G. Fichtinger and C. Tempany. 'Transperineal Prostate Biopsy Under Magnetic Resonance Image Guidance: A Needle Placement Accuracy Study.' Journal of Magnetic Resonance Imaging. 2007.
+
+\bibitem{Pernelle2013MRIValidation}G. Pernelle et al., “Validation of Catheter Segmentation for MR-Guided Gynecologic Cancer Brachytherapy,” in Medical Image Computing and Computer-Assisted Intervention – MICCAI 2013, 2013, pp. 380–387.
+
+\bibitem{Mastmeyer2017NeedleFinder}A. Mastmeyer, G. Pernelle, R. Ma, L. Barber, and T. Kapur, “Accurate Model-based Segmentation of Gynecologic Brachytherapy Catheter Collections in MRI-images,” Med Image Anal, vol. 42, pp. 173–188, Dec. 2017.
+
+\bibitem{Zijlstra2017MRISimulation}F. Zijlstra, J. G. Bouwman, I. Braškutė, M. A. Viergever, and P. R. Seevinck, “Fast Fourier-based simulation of off-resonance artifacts in steady-state gradient echo MRI applied to metal object localization,” Magn. Reson. Med, vol. 78, no. 5, pp. 2035–2041, Nov. 2017.
+
+\bibitem{Mehrtash2017DeepInfer}A. Mehrtash et al., “DeepInfer: Open-Source Deep Learning Deployment Toolkit for Image-Guided Therapy,” Proc SPIE Int Soc Opt Eng, vol. 10135, Feb. 2017.
+
+
+
 
 \end{thebibliography}

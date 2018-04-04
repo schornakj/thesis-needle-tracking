@@ -286,8 +286,8 @@
          \end{tabular}\par
  %       \vskip 1em
 %         \vskip 2em
-        {A dissertation submitted to The Worcester Polytechnic Institute in conformity with
-          the requirements for the degree of Doctor of Philosophy.\par}
+%         {A dissertation submitted to The Worcester Polytechnic Institute in conformity with
+%           the requirements for the degree of Doctor of Philosophy.\par}
         % {November 2012}\par
        % \end{center} \par
 
@@ -296,7 +296,7 @@
         {Worcester, Massachusetts\par}
          {\@degreemonth, \@degreeyear\par}
          \vskip 8em
-         \@copyrightnotice
+%          \@copyrightnotice
 \end{center} \par
 
   %       {\@thesistype\ submitted to The Johns Hopkins University in

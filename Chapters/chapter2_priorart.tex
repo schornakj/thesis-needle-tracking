@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%% chapter.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample chapter
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{savequote}[8cm]
+%  ``Veni, vidi, vici.''
+%  \qauthor{Julius Caesar}
+%\end{savequote}
+
+
+\chapter{Previous Work}
+\label{litreview} % Always give a unique label
+% use \chaptermark{}
+% to alter or adjust the chapter heading in the running head
+
+% \section{Literature Review}
+% \label{sec:InterventionRobotics}
+
+- Critical review! What was contribution, what's good, what's not good
+
+- Many needle modeling papers assume that no imaging exists, and essentially try to model the needle throughout insertion as perfectly as possible. Not realistic given that the mechanical properties of tissue vary greatly.
+
+- Hard to update some models, hard to get enough data to update other models.
+
+- Common to try to capture the entire needle in a single plane. Needle tip artifact is usable but poorly characterized. Limits options for trajectories.
+
+- Needle localization using axial scans needs info about the depth of the needle to work
+
+
+
+\section{Needle Modeling}
+Kinematic non-holonomic needle models, such as the bicycle model introduce in \cite{webster_nonholonomic_2006}, allow future positions of the needle tip to be estimated given the present pose of the needle, its velocity, and a radius of curvature describing the deflection of the asymmetrical bevel-tipped needle. The goal of this line of work is to produce a model of needle behavior that very closely approximates its actual performance so that the trajectory of the needle can be estimated throughout insertion in the absence of imaging. A challenge with this approach is that the needle trajectory is influenced by a wide assortment of factors, including dynamic friction and torsion in the needle shaft. Subsequent work such as \cite{reed*_modeling_2009} and \cite{swensen_torsional_2014} accounts for some of these interactions, but the resultant implementation of the model is very complicated. While the radius of curvature has been shown to accurately predict the trajectory of the needle tip in controlled situations, it is a function of so many different 
+
+Finite-element modeling of the needle and surrounding medium addresses some of the drawbacks of the kinematic needle model, such as the ability to model inconsistent deflection when inserting through nonhomogeneous tissue. This approach necessitates an explicit model for the sliding interface between the needle shaft and the surrounding tissue, as well as the elastic mechanical properties that govern the deformation of tissue during insertion. Due to the complexity of representing interactions at the tissue-needle interface and the difficulty of measuring the shape of the needle in three dimensions this approach has generally been demonstrated in two dimensions with simple needle trajectories. Since needles are very slender and the magnitude of deflection is comparatively large, the usual assumption for linear displacement does not hold and a computationally-intensive numerical solver is required.
+
+Other papers represent needle deflection using principles of beam bending. These generally assume just a single bending direction, which isn't representative of needle behavior during an insertion guided by continuous-rotation steering. The concept of minimum bending energy as a means to estimate the actual shape of the needle shaft is used by \cite{roesthuis_modeling_2015}.
+
+Generally, prior work in needle modeling assumes that no information about the needle tip is available during insertion and that the model must compensate for this by very accurately modeling the kinematic and dynamic behavior of the needle throughout insertion. Given the variation of tissue properties and the nonlinearity of forces acting on the needle, this is probably not a realistic goal.
+
+\section{Needle Localization}
+Prior work created by our research group such as \cite{patel_closed-loop_2015} uses MR imaging in the coronal and saggital planes to follow the needle during insertion. The needle tip is captured in each scan and its measured position is used to plan the pose of the subsequent scan in the perpendicular plane. The field of view of each plane is sized based on the maximum anticipated deflection of the needle between scans. Since the only information used to plan the location of the next scan is the position of the needle tip within the previous scan plane, a significant risk with this approach is the loss of tracking if the needle tip is not found in one of the scans. In the absence of manual intervention, this risk must be mitigated by generously sizing the scan plane depth and limiting needle insertion to very slow speeds.
+
+NeedleFinder, a 3D Slicer extension presented by \cite{pernelle_validation_2013} is representative of current work in needle localization. Given a manually-selected tip position, NeedleFinder searches through sequential axial scan planes and finds the cross-sections of the voids created by needle and catheter artifacts in each layer. An angular-spring finite element model defined by the shape and stiffness of the needle is fit to the detected needle points. Manual selection of the needle tips is required because of the difficulty of automatically distinguishing the needles from anatomical features and noise in the MR images.
+
+An alternative method is to add sensors to the needle to directly measure its deflection and calculate the actual position of the needle tip. \cite{abayazid_integrating_2013} embeds Fiber Bragg Grating optical sensors into the shaft of the needle, which measure the strain in the needle as it bends and allow the shape of the needle to be calculated throughout insertion to achieve robotic steering. A drawback of this approach is that it requires specially-modified needles, which precludes the use of common clinical-style biopsy needles.
+
+\cite{zijlstra_fast_2017} models susceptibility artifact shapes for metal fiducial markers in MR data to automatically segment the markers and determine their poses. This approach could probably be extended to detect needle tip poses from tip artifacts, but the variation in the needle artifact with the orientation of the needle relative to the direction of the magnetic field would present some challenges.
+
+
+
+% \subsection{Needle Mechanical Modeling}
+% The  model proposed by \cite{WebsterModel} uses a 2D bicycle model with a constant steering angle to capture the curving trajectory caused by the asymmetric forces on the needle tip. The dynamic model used in \cite{ReedDynamics} extends the bicycle model to include needle twist caused by friction and viscous damping along the length of the needle. \cite{SwensenDynamics} builds upon this dynamic model by adding time-variant insertion depth so that the length of the needle affected by dynamic effects varies during insertion. This hybrid kinematic/dynamic model is a middle ground between the exclusively kinematic model, which can only indirectly represent important needle mechanical behavior, and a complex finite-element model, which would need to include representations of both the needle and the surrounding soft phantom medium, as well as the friction and damping at their interface.
+
+% \subsection{Needle Localization}
+% Methods to localize a needle tip using MRI differ significantly from those used for localization via ultrasound and computer vision. As described in \cite{NeedleArtifactConfirmation} and \cite{NeedleArtifactRobotic}, the metal needle is only visible in MR imagery by interpreting the artifact caused by its interaction with the magnetic field. The size and shape of this artifact is dependent on the shape and composition of the needle, the strength of the magnetic field, and the orientation of the needle relative to the field. The shape of the artifact could be predicted and applied towards more precisely locating the needle tip.
+
+% The localization strategy used in\cite{AIMNeedleSteering} finds the centroid of the needle tip artifact in images taken from alternating perpendicular slices. This approach produces a steady-state error relative to the true tip position, but the measurement is usable for guidance during insertion.
+
+% The shape and extent of the needle tip artifact could be simulated using a numerical model and the physical parameters of the needle shaft and tip. [CITE] is an early effort to validate tip artifact simulations for bevel-tipped needles.
+
+
+% \subsection{Needle Control}
+% The needle models used by \cite{SwensenDynamics} and \cite{KallumGuidance} are designed for use with a feed-forward controller which guides the needle into a specified plane. An additional controller would steer the needle towards the target within that plane. Control in three dimensions is significantly more challenging, especially if capabilities such as trajectory planning and obstacle avoidance are desired. A 3D controller free of these constraints could calculate the desired needle steering angle using the difference between the end point of a hypothetical straight-line trajectory and the position of the target.
+
+% [TODO: Cite CURV, duty-cycle steering, arctan steering from Hamlyn paper]

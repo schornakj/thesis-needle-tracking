@@ -1,0 +1,71 @@
+\chapter{Conclusions and Future Extension}
+\label{conclusions} % Always give a unique label
+
+
+\section{Discussion}
+- Resampling needle cross sections produces a better needle model than only tracking the tip, since the needle shaft deflects because of the elasticity of the phantom material.
+
+- Linear regression is inadequate. Lowish-order polynomial regression works decently if there are many measurements and if the needle isn't subject to multiple bends.
+
+- Minimum bending energy curve fitting works well with fewer data points than regression, but it can be slow if the initial estimates are not near to the final parameters, or if many curve segments are to be solved at the same time. There isn't any particular benefit to working with higher-degree polynomials, especially if the measured needle points are only associated with the end points of the curves.
+
+- MBE for a single curve is less accurate than a piecewise curve, but the complexity of implementation and the time to solve is greatly reduced.
+
+\section{Future Work}
+- Need to implement communication with the MRI scanner to programmatically control scan planes, fields of view, protocols, etc. This was done previously as part of Nirav's PhD work but it was limited to a specific model of scannerl.
+
+- Need better needle control algorithms to steer the needle along a trajectory, rather than just to a target point. 
+
+- Demonstrate MRI simulation of needle artifacts
+
+- Package and release stereo vision system and software
+
+- Demonstrate MRI needle tracking using an actual MRI machine during a live insertion.
+
+Volumetric imaging would present several benefits to 3D tracking, but the comparatively long scan times required (30 seconds according to \cite{BiopsyReview}) would limit its usefulness for real-time control in situations representative of clinical use. If the two-plane approach goes together easily, then I will pursue more advanced imaging methods.
+
+It is expensive and time-consuming to test on actual MRI hardware. A needle insertion software simulation that returned MR-style imagery would be useful for early testing and development. This could probably be developed from a high-resolution 3D volumetric scan of a representative pelvic region.
+
+The computer vision needle tracking software I developed in Spring 2017 is a useful tool for evaluating needle control methods, and I could continue developing it through 2018.
+
+
+% \section{Summary of Work and Contributions}
+% An overview of this work is presented below with a summary of contributions and lessons learned along the way.
+
+% \begin{itemize}
+% \item
+% \textbf{Contribution 1}
+
+% Contribution 1
+
+% \item
+% \textbf{Contribution 2}
+
+% Contribution 2
+
+% \item
+% \textbf{Contribution 3}
+
+% Contribution 3
+
+% \end{itemize}
+
+% \section{Impact and Future Work}
+% The research presented in this dissertation addresses several major challenges.
+
+% %\begin{itemize}
+% \textbf{Impact}
+
+% Here is the impact of my work.
+
+% %\item 
+% \textbf{Lessons Learned}
+
+% Some lessons I've learned.
+
+% %\item 
+% \textbf{Future Work}
+
+% Future work includes...
+
+%\end{itemize}

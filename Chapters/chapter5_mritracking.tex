@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%% chapter.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample chapter
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{savequote}[8cm]
+%  ``Veni, vidi, vici.''
+%  \qauthor{Julius Caesar}
+%\end{savequote}
+
+
+\chapter{Needle Localization in MR Images}
+% \label{stereotracking} % Always give a unique label
+% use \chaptermark{}
+% to alter or adjust the chapter heading in the running head
+
+\section{MRI Dataset}
+- Talk about scan sequence that was used: 3D Fast Field Echo in a 3T MRI at UMass Medical Center
+
+- Biopsy needle inserted into agar gelatin phantom.
+
+- 11.9mm steps, determined by removable spacers
+
+- Plastic needle mount attached to phantom keeps needle in a known orientation, so needle base pose can be calculated for each scan volume.
+
+\section{Software Architecture}
+\subsection{Simulated MRI Scanner}
+- 3D Slicer module using an existing volume.
+
+- Return a slice of the data at a specified scan plane pose and field of view for a given time.
+
+\subsection{Needle Tracking Module}
+- 3D Slicer module
+
+- Callback function registed to MRML node associated with MRI data
+
+- When node is updated, finds position of needle tip in the scan.
+
+\section{Experiment}
+- Use data from two prior insertions
+
+- Ground truth is error in each axial scan plane between the modeled needle curve and the centroid of needle artifact cross-section.
+
+- Models under comparison are a line and a 2nd-degree polynomial fit by least squares to the sampled points, and the needle mechanical model.
+
+- Needle base kinematics set manually for each step of insertion.
+
+
+\section{Results and Discussion}
+- Add plot for in-plane error between ground truth and curve as function of insertion depth, for each set of scans
+
+- Linear fit isn't accurate, since needle does deflect. Misrepresents tip pose.
+
+- Low-order polynomial is an OK fit.
+
+- Mechanical model is a good fit, even with fewer sampled points.
+
+- Experiment was conducted offline, so the increased processing time for fitting mechanical model is OK.
