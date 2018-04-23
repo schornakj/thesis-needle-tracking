@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%% chapter.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample chapter
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{savequote}[8cm]
+%  ``Veni, vidi, vici.''
+%  \qauthor{Julius Caesar}
+%\end{savequote}
+
+
+\chapter{Needle Localization in Stereo Images}
+\label{sec:cameratracking} % Always give a unique label
+% use \chaptermark{}
+% to alter or adjust the chapter heading in the running head
+
+Camera-based needle tracking is useful for the development of needle insertion systems.
+
+Important to demonstrate compatibility with real-time insertion, and interoperability with the insertion robot.
+
+Can test many more insertions than in MRI, due to shorter turnaround time, better availability, and less expensive operation.
+
+\section{Vision Systems}
+\subsection{Hardware}
+The stereo tracking system used in this chapter was used previously in \cite{wartenberg_closed-loop_2017}. It uses two Logitech C920 USB webcams set to capture images at a resolution of 640px by 480px. The cameras are mounted in a highly-converging configuration, which each camera oriented normal to a face of the phantom.
+
+- Add a picture of the camera setup
+
+\subsection{Calibration and Registration}
+- Add diagram of transforms between robot and cameras
+
+	The stereo camera system was calibrated using the ROS camera calibration package, which bundles both intrinsic and extrinsic calibration into the same process. The origin of the stereo system is at the optical center of the side-mounted camera.
+    
+    A checkerboard marker mounted to a known position on the needle insertion robot allows the calculation of a transform relating the robot to the stereo system.
+    
+%     The highly-converging stereo arrangement presents challenges to accurate calibration. The camera fields of view intersect in a small volume, so there is a limited range of poses in which checkerboard corners are clearly visible in images from both cameras. Anecdotally, using two differently sized and shaped checkerboards in the same process produced better extrinsic calibration results in this highly-converging case than a single-checkerboard approach. The calibration patterns used were a 10x7 grid with 7mm squares and a 9x8 grid with 3.5mm squares. 
+% 	Setting the stereo origin to be aligned with one camera is advantageous for testing and troubleshooting. The default outputs of the ROS stereo calibration node set the offset between the cameras in the Z-direction to be zero. The transform of the second camera in the frame of the first is an intermediate output of the node, so we can use it to construct projection matrices that place the stereo origin in a desirable orientation.
+    
+
+
+% 	ArUco markers are used throughout the registration process. The ArUco-augmented ChArUco checkerboard presents advantages over traditional checkerboard patterns since the uniquely-identified ArUco markers grant definitive directionality to the board in cases where the orientation of a normal board is ambiguous.
+% 	Find pose of ChArUco calibration checkerboard in a removable plastic mount at a known position relative to the robot base. Save the transform between stereo frame and registration marker frame. Measured transforms are output in the frame of the registration marker. On the receiving end, the pose of registration marker relative to base frame is known, so measurements can be converted to be relative to the robot base frame.
+    
+% \subsection{Phantom Registration}
+% 	Assume that phantom is a rectangular prism that can be represented as a box primitive. Create a custom ArUco board that fits one face of the phantom with markers along the top, bottom, and rear edges of the phantom face. Place the board origin at the center of the phantom. During registration find the pose of the board in images from the side camera. At the start of needle tracking initialize a triangular mesh to match the dimensions of the phantom and set its transform to match the one measured during registration.
+% 	Other groups registering refracting volumes to camera systems have used different types of markers, such as colored spheres at the corners of a rectangular volume. The dependencies for the ArUco markers were already set up when the problem of phantom registration was approached, so it was convenient to use them.
+
+\section{Needle Tracking Software}
+- Add flowchart of software classes and data
+
+% \subsection{Refraction Compensation}
+% The index of refraction of PVC plastic mixed at a 7-to-3 ratio with softener agent was experimentally measured to be about 1.5.
+
+% The dimensions and position of the phantom relative to the camera frame is defined by a user-specified box primitive represented by a triangular-faced mesh.
+
+% Refraction compensation is required to correct for error in the observed positions of objects measured far from the interface between air and a refracting medium such as water, plastic, or glass, especially when the direction of observation meets the interface at an angle. \cite{Muller2014Refraction} presents a method for refraction compensation designed for estimating the poses of fish within an aquarium. The problem of observing a moving object in a transparent plastic phantom is similar in terms of the arrangement of the refracting body and moving objects relative to fixed cameras.
+
+% A simulated ray is cast from the position of each camera to the measured position of the needle tip through the mesh. The location of the intersection with the phantom mesh and the normal direction of the intersected face are detected. The angle between the ray and the surface normal is calculated. The angle on the opposite side of the refractive interface is calculated via Snell's Law using the indices of refraction of the phantom material and the surrounding environment. The ray is rotated by the difference between the outside and inside angles about the point of intersection in the plane containing the ray and the surface normal. The closest point between the refracted rays from both stereo cameras is the actual position of the needle tip within the phantom.
+
+\subsection{Forward Kinematics}
+- Receive output of insertion robot forward kinematics via OpenIGTLink
+
+- Data is the transform from stereo camera frame to needle tip assuming that the needle is rigid
+
+- Use needle length to calculate transform from stereo camera frame to needle base
+
+
+\subsection{Image Sampling}
+Sequence of operations is designed to be very similar to imaging in MRI. 
+
+Use transform between cameras and needle base and the previous model of the needle to find the position in the image just behind the needle tip.
+
+-ample pixels in a column perpendicular to the direction of needle insertion at the point close to the tip and at N other points spaced along the needle shaft
+
+\section{Experiments}
+- Ground truth is sampling the entire length of the needle
+
+- Compare sampling only a few points along the needle and fitting the various curve models
+
+- Bending energy mechanical model
+
+- Generic lower-degree polynomials
+
+- Linear fit
+
+\section{Results}
+\begin{figure}[h]
+\includegraphics[width=8cm]{Fig/placeholder.jpg}
+\caption{Magnitude of in-plane error over insertion depth for each type of needle model.}
+\label{fig:results_error}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=8cm]{Fig/placeholder.jpg}
+\caption{Magnitude of in-plane error for the highly-curving needle case.}
+\label{fig:pose_error}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=8cm]{Fig/placeholder.jpg}
+\caption{Magnitude of needle tip pose orientation error for each type of needle model.}
+\label{fig:pose_error}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=8cm]{Fig/placeholder.jpg}
+\caption{Calculated needle tip trajectory for each type of needle model over the full length of insertion.}
+\label{fig:pose_error}
+\end{figure}
+
+- Beam bending energy model gives a similar result to the least-squares model with fewer sampled points.
+
+- Useful when sampling is expensive.
+
+- Bending energy model also accommodates torturous needle trajectories due to parameterization of position in each axis.
+
+    
+
+    
+
+    
+% \section{Needle Tracking}
+%     Noise and extraneous motion is filtered by thresholding the flow direction to within a range close to the expected needle insertion and retraction directions, and by thresholding the flow magnitude to a value above the observed maximum when no needle is present. 
+
+% Dense optical flow processing time is reduced by only analyzing a limited subsection of each video frame. This rectangular subsection is centered at the last tip coordinate and clamped to the boundaries of the frame.
+
+% Since this algorithm detects all motion in the camera field of view, the environment around the phantom must be controlled to eliminate motion other than the needle tip.
+
+% \section{2D Validation}
+% Compared manually-selected needle tip coordinates with those provided by DOF algorithm. [CITE New Paper]
+
+% [INCLUDE PLOT]
+
+% \section{3D Validation}
+% Used OptiTrack to produce ground truth data for needle tip pose. [Cite New Paper]
+
+% [INCLUDE PLOT]
+

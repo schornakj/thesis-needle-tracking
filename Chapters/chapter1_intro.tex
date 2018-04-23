@@ -1,153 +1,148 @@
 \chapter{Introduction}
-\label{intro} % Always give a unique label
+\label{sec:intro} % Always give a unique label
+\section{Motivation}
+Many interventional procedures rely on needle insertion, including biopsy and brachytherapy\cite{bomers_mri-guided_2012}. Accurate needle placement is a critical factor in the success of these procedures\cite{nath_dosimetric_2000, youk_missed_2007}. Deflection of the needle tip during insertion and variation in the mechanical properties of tissue cause the needle to deviate from its expected trajectory and miss the target. This can be mitigated by using an alignment structure to aim the needle at the target and verifying that the correct position has been reached in post-operative imaging \cite{tokuda_-bore_2012}. Even with preoperative image-based planning and careful alignment with the target, several insertions may be required to attain the desired needle placement\cite{onik_ct-guided_1988}. 
 
-% \epigraph{``All children are artists. The problem is how to remain an artist once he grows up."(This is not necessary if you don't want it.)}
-% {Pablo Picasso}
+Live intra-operative imaging of the needle throughout insertion reduces error caused by needle deflection by allowing the surgeon to see if the needle is deviating from its trajectory and take corrective action. (CITE!) Ultrasound (US) and Magnetic Resonance Imaging (MRI) are preferred imaging modalities. While US is portable and hand-steerable, MRI offers superior resolution of soft tissues compared to both US and CT\cite{weiss_mr-guided_2008}. Manually-controlled image-guided needle insertion is still a challenging task. Under MRI guidance the confined space of the scanner bore limits the surgeon's visibility and range of motion\cite{damico_transperineal_2000, menard_mri_nodate}.
 
-% \section{Introduction}
-% \label{sec:Introduction}
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\caption{A manual MRI-guided biopsy in progress.}
+\label{fig:mri_intraoperative}
+\end{figure}
+
+Robotically-controlled needle insertion solves some of the challenges of live intraoperative MRI imaging by reducing the clinician's workload and moving them out of the scanner bore. (CITE!)
+
+Using live imaging, an insertion robot can correct for unmodeled tip deflection and keep the needle on its expected trajectory, improving the success rates of biopsies and other needle-based interventions. (CITE!)
+
+Several collaborative needle insertion robots have been demonstrated. These allow the surgeon to control the rate of needle insertion while the robot controls the orientation of the needle. (CITE!)
+
+Previous work has shown that closed-loop control of MRI \cite{patel_closed-loop_2015} and US \cite{vrooijink_needle_2014} coupled with image processing techniques for needle localization can track a needle tip during insertion with a useful degree of accuracy.
+
 \section{Problem Formulation}
-Many interventional procedures rely on needle insertion, including biopsy and brachytherapy. Accurate needle placement is a critical factor in the success of these procedures. Deflection of the needle tip during insertion and variation in the mechanical properties of tissue cause the needle to deviate from its expected trajectory and miss the target. A common strategy to mitigate this is to use an alignment structure to aim the needle at the target and to verify that the correct position has been reached in post-operative imaging. Even with these techniques several insertions may be required to successfully reach the target.
+\label{sec:problem_formulation}
+A key requirement in closed-loop image-guided needle insertion is the accurate measurement of the 6-degree-of-freedom pose of the needle tip using data from the imaging system. Accurate tip localization is important to allow the needle controller to determine the control input required to minimize the error between the actual pose of the needle and the pose required to match a desired trajectory. Searching for the needle in each image on an individual basis introduces errors due to imaging artifacts, noise, and structures near the needle, which reduces tip localization accuracy. A needle model that combines data from real-time imaging with the kinematics of the insertion platform and the mechanical properties of the needle would allow accurate estimation of the pose of the needle tip while requiring comparatively few observations of the needle position.
 
-Live intra-operative imaging of the needle throughout insertion mitigates error caused by needle deflection by allowing the surgeon to see if the needle is deviating from its trajectory and take action to correct. Ultrasound and Magnetic Resonance Imaging (MRI) are common imaging modalities. Manually-controlled image-guided needle insertion is still a challenging task: when using US imaging the surgeon must control both the needle and the transducer, while the confined space of the MRI scanner bore limits the surgeon's visibility and range of motion.
-
-Robotically-controlled needle insertion using intra-operative imaging can correct for unmodeled tip deflection and keep the needle on its expected trajectory, improving the success rates of biopsies and other needle-based interventions. Several collaborative needle insertion robots have been demonstrated, where the surgeon controls the rate of needle insertion and the robot controls needle orientation.
-
-
-*** Problem formulation: A key requirement in robotic image-guided needle insertion is the localization of the needle tip in each image and the calculation of the needle tip pose. Observation of the needle tip during insertion is required. Prior work in needle tip localization has generally searched for the needle in each image separately, but this is inaccurate in scenarios where significant noise or other needle-like shapes are present. Fully-autonomous needle tip tracking in clinically-representative situations is very challenging.
-
-
-Previous work such as \cite{AIMNeedleSteering} has shown that closed-loop control of MRI scan planes coupled with image processing techniques for needle localization can track a needle tip during insertion with a useful degree of accuracy.
-
-\subsection{Needle Artifact}
-Needle artifact is caused by distortion of magnetic field by metal needle. Shape of artifact depends on material, orientation, scan plane parameters, imaging strategy.
-
-\subsection{3D Slicer}
-3D Slicer\cite{Fedorov2012Slicer} is an open-source GUI-centered tool for performing medical image processing and image-guided procedures. It provides a common standard and familiar interface for medical researchers, and lots of new imaging research is released as Slicer modules.
-
-\subsection{OpenIGTLink}
-OpenIGTLink is a communication standard for image-guided therapy (IGT) that supports sending and receiving images, DICOM data, and 3D homogeneous transforms between devices and programs via TCP/IP. 3D Slicer includes an OpenIGTLink extension to allow communication with imaging devices like MRI and ultrasound and control of robotic surgical tools.
+- TODO: (Fischer) Why is accurate localization important?
 
 \section{Thesis Contributions}
-- What does this work do that's new? What's most important?
 
-* Model-based needle tip pose estimation
+\subsection{Needle Modeling by Minimization of Bending Energy}
+This thesis presents an approach to needle modeling that uses the mechanical bending properties of the needle, the pose of the needle base, and a set of observed needle positions along the needle shaft to determine the configuration of the needle minimizes the bending energy while meeting the observed constraints. The needle model is represented by a parametric polynomial curve. 
 
-** Use of real-time kinematic info from insertion robot
+\subsection{Imaging-Agnostic Needle Tip Localization Algorithm}
+The needle model provides continuous needle pose estimates along its shaft, which can be used to plan imaging to observe the needle position after motion. The expected position of the needle is used to determine the actual position of the needle in received images, which reduces localization error caused by noise and other shapes near the needle. Since the needle model is updated using a set of positions along the needle shaft instead of the position of the needle tip, imaging in planes transverse to the needle can be used instead of imaging in the coronal and sagittal planes. This mitigates the risk of loss of needle tracking during insertion.
 
-* Slicer modules
-
-* 3D needle tip tracking using real-time data
-
-*** Key contribution: Including the forward kinematics of the insertion robot and the mechanical properties of the needle enhances localization of the needle tip by limiting the search area, reducing the required frequency of new images, and reducing the likelihood that the imaging process will lose tracking of the needle tip during insertion. This is implemented as a parametric polynomial curve fit to intersect detected needle points while minimizing the bending energy in the needle.
-
-
-A robotic needle insertion system provides kinematic data which can be used to calculate the pose of the needle base in the global frame. In combination with a mechanical simulation of needle deflection throughout insertion, the pose of the needle tip can be found in the global frame. The modeled needle tip pose can be used during real-time insertion tracking to plan imaging. The expected result is that the tip pose of a needle can be estimated to some comparatively high degree of accuracy throughout a live insertion, which could be used for needle trajectory control and error compensation.
-
-
-
-
-
-
-
-% This is the Literature Review Section. Here is a figure: Fig.\ref{fig:exampleFigure} and here is a table: Table \ref{tab:Protocol}.
-
-% \begin{figure}[h]
-%   \begin{center}
-%     \includegraphics[width=120mm]{Fig/chap1/innomotion.pdf}
-%   \end{center}
-%   \vspace{-4mm}
-% \caption[CAD model of the Innomotion robotic system.]
-% {This is a sample figure with a sample citation \cite{Fischer2008_TMECH} \copyright 2008 IEEE.}
-%  \label{fig:exampleFigure}
-% \vspace{-2mm}
-% \end{figure}
-
-% \begin{table}[htb]
-%   \begin{center}
-% \caption[Scan parameters for compatibility evaluation.]{Detailed scan parameters for each of four protocols for compatibility evaluation}
-% \label{tab:Protocol}
-%   \end{center}
-% \includegraphics[width=150mm]{Fig/chap1/Protocol.pdf}
-% %\caption*{}
-% \end{table}
-\vspace{-2mm}
-
-% \section{Dissertation Contributions}
-% \label{sec:Contributions}
-
-% \begin{itemize}
-% \item
-% \textbf{Contribution 1}
-
-% Contribution 1
-
-% \item
-% \textbf{Contribution 2}
-
-% Contribution 2
-
-% \item
-% \textbf{Contribution 3}
-
-% Contribution 3
-
-% \end{itemize}
-
-
-\section{Thesis Overview}
-\label{sec:Overview}
-\subsection{Needle Model Integration}
-Previous work in needle localization has focused on applying computer vision and image processing algorithms to find the needle tip in camera images and MR data. Particular emphasis has been placed on the calculation of needle positions and orientations for closed-loop control of a robotic insertion system. A useful capability not demonstrated so far would be the use of a mechanical needle model to calculate the expected needle position given the previous needle state and the known inputs at the robot/needle interface, which could be used by the imaging and needle localization systems to improve the imaging rate or measurement accuracy.
-
-\subsubsection{Needle Model Implementation}
-The kinematic model proposed by \cite{WebsterModel} has already been implemented and extended by various authors, so it would be a reasonable starting point for needle localization augmentation. I have a working Python implementation of this model.
-
-The addition of torsional dynamics accounting for variable needle depth in the dynamic model shown in \cite{SwensenDynamics} would be useful when working with the thin nitinol needles used to demonstrate small-radius needle steering. The model in \cite{SwensenDynamics} is considerably more technically complex than models in \cite{WebsterModel} or \cite{ReedDynamics}, but I have developed a tentative implementation for an RBE502 Robot Controls project.
-
-Challenges with needle modeling:
-
-- Many models assume that the needle isn't rotated during insertion, and that the deflection is effectively only in one direction.
-
-- Need to represent any conceivable bending configuration
-
-- Limited measurements to fit FEA mode
-
-- Can't measure twist within the needle
-
-\subsection{Improved Needle Localization}
-
-\subsubsection{Needle Localization via Cross-Section}
-- Use needle model and bot kinematics to estimate tip depth
-- Conduct scan just behind estimated tip position
-- Measure actual needle cross section position
-- Update model to reflect actual needle behavior
-- Reduced dependence on capturing tip in scan plane, less likely to completely lose needle
-- Benefits from small FOV
-- Use FFE sequence to minimize needle shaft artifact 
-
-\subsubsection{Sizing of Imaging Planes}
-The imaging strategy in \cite{AIMNeedleSteering} used conservative imaging parameters to show that closed-loop control of the imaging planes could keep the needle tip within the imaged volume throughout insertion. A comparatively large slice thickness of 10mm was required to guarantee that the imaging planes would never lose tracking during insertion. Extending this system to make model-based predictions of needle behavior would allow the system to move the imaging planes in anticipation of the motion of the needle tip. While the current approach sizes the thickness of the imaging planes to accommodate any possible tip motion between imaging updates, under a model-based approach the slice thickness would be designed around the error between the modeled and actual motion of the needle tip. Under a well-designed model with physically-representative system parameters, this approach would be more accurate than previous efforts. The measured position of the needle tip could update the state of the dynamic model, which would prevent the model from diverging from the actual behavior of the needle during insertion.
-
-\subsection{Alternative Imaging Strategies}
-The 2Hz scan rate achieved by \cite{AIMNeedleSteering} represents a baseline and a possible starting point for improvement. The approach used in \cite{AIMNeedleSteering} is to take alternating scans in the coronal and sagittal planes, where the plane of each scan is chosen based on the position of the needle detected in the previous scan in the other plane.  If the position of the needle during insertion is known with some certainty, then a different imaging approach could be used. One option could be to reduce the thickness of the plane, which would improve the visibility of anatomy near the needle but could increase the risk of losing tracking on the needle during insertion.
-
-Another option could be to use a volumetric scan, which would provide voxel data that would determine the 3D needle tip position. A volumetric approach could be more tolerant of off-axis insertion directions, but it would require a significantly different data processing strategy than the current 2D imaging sequence. It might also be too difficult to successfully implement within the scope of this project.
-
-In the context of project work, making modifications to the 2D plane method would be more likely to result in a working system, and the volumetric approach could be researched and implemented later in the project once the capabilities and limitations of the MRI machine and its software are more completely understood.
-
-\subsection{Alternative Scan Plane Orientation}
-The coronal/sagittal plane strategy used in \cite{AIMNeedleSteering} assumes that the needle will always be inserted coaxially with the bore of the MRI machine, and that its direction will not significantly deviate during insertion. Modeling of 6-DOF needle pose, coupled with measurement of needle pitch and yaw, would provide sufficient data to realign the scan planes to keep the planes tangential to the tip of the needle. While this would present added complexity in the form of frequently-updated transforms for the scan planes, it could provide better tip localization results, especially if the scan plane is much thinner than the 10mm baseline from \cite{AIMNeedleSteering}.
-
-\subsection{Real-Time Control}
-Since real-time needle guidance is the ultimate goal of the project, care should be taken that the chosen implementations do not preclude processing times less than the MRI scan rate. It would also be beneficial to experimental data collection if closed-loop insertion trials could be completed quickly.
+\subsection{MRI Data Collection}
+MRI scans were collected of a biopsy needle being inserted into a gelatin tissue phantom. An alignment structure restricted the pose of the needle base during insertion, allowing each scan at a regular insertion interval to be associated with a needle pose.
 
 \subsection{Slicer Module}
-Releasing the above functionality as a Slicer extension would facilitate future research and extension by other groups. The robots used in the AIM Lab are generally designed to communicate via OpenIGTLink, which is already built into Slicer.
-- Get more eyes on the research, facilitate transfer to future student
+An extension for 3D Slicer, an open-source medical imaging program, was created to evaluate the needle model when applied to the MRI dataset. The user interacts with the needle model through the Needle Tracking module, which accepts inputs for the current needle base pose and the current 3D scan in the MRI dataset and returns polynomial coefficients representing the current state of the needle. A supporting MRI Reslicer module resections the 3D MRI scans into 2D slices at specified depths, which simulates part of the functionality of an MRI machine.
 
-\subsection{Supporting Simulation Software}
-The capability to conduct tests independent of the availability of MRI equipment and a suitable insertion platform is highly desirable, especially during the evaluation of steering algorithms. Two pieces of software separate from the Slicer module are required. The first is a kinematic simulator of the insertion robot that can conduct a constant-velocity insertion profile while publishing the pose and velocity of the base of the needle. The second is a simulated MRI scanner, which chooses a volumetric scan from a timestamped series to match the current state of the insertion platform and resections a 2D scan using the field of view and scan plane pose provided by the Slicer module. This combination of utilities will be sufficient to 
+\subsection{Stereo Tracking Software}
+The needle model was also applied towards tracking a needle in live stereo video, which is useful for benchtop evaluation of needle control algorithms.
+
+
+\section{MRI Physics}
+
+Magnetic Resonance Imaging (MRI) is used to image material containing hydrogen ions, or protons, such as human tissue. The strong magnetic field of the MRI machine causes the free protons to align along the axis of the field. A pulse of radiofrequency (RF) radiation excites the protons, which subsequently emit RF energy as they return to a lower-energy state. The emitted energy is measured by the scanner to generate and image of the tissue based on the intensity of the return from different areas.
+
+Performing an MRI scan on a material that does not contain any free protons, such as plastic or metal, produces a dark void in the image. Metal objects distort the magnetic field, producing susceptability artifacts around the objects. The shape and extent of the artifact depends on the parameters of the MRI scan sequence, the shape of the object, and the material. Needles and wires behave like antennae in the MRI environment, so they produce imaging artifacts around their tips\cite{lewin_needle_1996}. Determining the position of the needle using its imaging artifact is the basis for needle tracking in MRI\cite{song_biopsy_2012}.
+
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\caption{MRI scan of a pelvic region undergoing biopsy.}
+\label{fig:mri_human}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\caption{MRI scan of a gelatin tissue phantom undergoing needle insertion. Note the artifact around the needle tip.}
+\label{fig:mri_phantom}
+\end{figure}
+
+
+\section{Tissue Phantoms}
+Synthetic tissue phantoms are often used during needle insertion studies instead of ex-vivo tissue specimens. These phantoms are designed so their mechanical properties reflect those of human tissue. They offer several benefits over real tissue, especially in the context of benchtop laboratory experiments.
+\begin{enumerate}
+\item Phantoms made of gelatin or plastic are transparent, so vision-based methods can be used for needle tracking or for validation of other imaging modalities.
+
+\item A needle inserted into a homogeneous tissue phantom will experience constant cutting force throughout insertion.
+
+\item Phantoms can include multiple regions with different mechanical properties separated by membranes.
+
+\item Phantoms have a much longer shelf life than tissue, granting more flexibility to studies.
+\end{enumerate}
+
+
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\caption{Gelatin tissue phantom similar to the ones used in this thesis.}
+\label{fig:gelatin_phantom}
+\end{figure}
+
+% \section{Medical Image Processing Software}
+% \subsection{3D Slicer}
+% 3D Slicer is an open-source GUI-centered tool for performing medical image processing and image-guided procedures. It provides a common standard and familiar interface for medical researchers. Algorithms developed by research into medical imaging are frequently released as Slicer modules.
+
+% \subsection{OpenIGTLink}
+% OpenIGTLink is a communication standard for image-guided therapy (IGT) that supports sending and receiving images, DICOM data, and 3D homogeneous transforms between devices and programs via TCP/IP. 3D Slicer includes an OpenIGTLink extension to allow communication with imaging devices like MRI and ultrasound and control of robotic surgical tools.
+
+
+
+% \section{Thesis Overview}
+% \label{sec:Overview}
+% \subsection{Needle Model Integration}
+% Previous work in needle localization has focused on applying computer vision and image processing algorithms to find the needle tip in camera images and MR data. Particular emphasis has been placed on the calculation of needle positions and orientations for closed-loop control of a robotic insertion system. A useful capability not demonstrated so far would be the use of a mechanical needle model to calculate the expected needle position given the previous needle state and the known inputs at the robot/needle interface, which could be used by the imaging and needle localization systems to improve the imaging rate or measurement accuracy.
+
+% \subsubsection{Needle Model Implementation}
+% The kinematic model proposed by \cite{WebsterModel} has already been implemented and extended by various authors, so it would be a reasonable starting point for needle localization augmentation. I have a working Python implementation of this model.
+
+% The addition of torsional dynamics accounting for variable needle depth in the dynamic model shown in \cite{SwensenDynamics} would be useful when working with the thin nitinol needles used to demonstrate small-radius needle steering. The model in \cite{SwensenDynamics} is considerably more technically complex than models in \cite{WebsterModel} or \cite{ReedDynamics}, but I have developed a tentative implementation for an RBE502 Robot Controls project.
+
+% Challenges with needle modeling:
+
+% - Many models assume that the needle isn't rotated during insertion, and that the deflection is effectively only in one direction.
+
+% - Need to represent any conceivable bending configuration
+
+% - Limited measurements to fit FEA mode
+
+% - Can't measure twist within the needle
+
+% \subsection{Improved Needle Localization}
+
+% \subsubsection{Needle Localization via Cross-Section}
+% - Use needle model and bot kinematics to estimate tip depth
+% - Conduct scan just behind estimated tip position
+% - Measure actual needle cross section position
+% - Update model to reflect actual needle behavior
+% - Reduced dependence on capturing tip in scan plane, less likely to completely lose needle
+% - Benefits from small FOV
+% - Use FFE sequence to minimize needle shaft artifact 
+
+% \subsubsection{Sizing of Imaging Planes}
+% The imaging strategy in \cite{AIMNeedleSteering} used conservative imaging parameters to show that closed-loop control of the imaging planes could keep the needle tip within the imaged volume throughout insertion. A comparatively large slice thickness of 10mm was required to guarantee that the imaging planes would never lose tracking during insertion. Extending this system to make model-based predictions of needle behavior would allow the system to move the imaging planes in anticipation of the motion of the needle tip. While the current approach sizes the thickness of the imaging planes to accommodate any possible tip motion between imaging updates, under a model-based approach the slice thickness would be designed around the error between the modeled and actual motion of the needle tip. Under a well-designed model with physically-representative system parameters, this approach would be more accurate than previous efforts. The measured position of the needle tip could update the state of the dynamic model, which would prevent the model from diverging from the actual behavior of the needle during insertion.
+
+% \subsection{Alternative Imaging Strategies}
+% The 2Hz scan rate achieved by \cite{AIMNeedleSteering} represents a baseline and a possible starting point for improvement. The approach used in \cite{AIMNeedleSteering} is to take alternating scans in the coronal and sagittal planes, where the plane of each scan is chosen based on the position of the needle detected in the previous scan in the other plane.  If the position of the needle during insertion is known with some certainty, then a different imaging approach could be used. One option could be to reduce the thickness of the plane, which would improve the visibility of anatomy near the needle but could increase the risk of losing tracking on the needle during insertion.
+
+% Another option could be to use a volumetric scan, which would provide voxel data that would determine the 3D needle tip position. A volumetric approach could be more tolerant of off-axis insertion directions, but it would require a significantly different data processing strategy than the current 2D imaging sequence. It might also be too difficult to successfully implement within the scope of this project.
+
+% In the context of project work, making modifications to the 2D plane method would be more likely to result in a working system, and the volumetric approach could be researched and implemented later in the project once the capabilities and limitations of the MRI machine and its software are more completely understood.
+
+% \subsection{Alternative Scan Plane Orientation}
+% The coronal/sagittal plane strategy used in \cite{AIMNeedleSteering} assumes that the needle will always be inserted coaxially with the bore of the MRI machine, and that its direction will not significantly deviate during insertion. Modeling of 6-DOF needle pose, coupled with measurement of needle pitch and yaw, would provide sufficient data to realign the scan planes to keep the planes tangential to the tip of the needle. While this would present added complexity in the form of frequently-updated transforms for the scan planes, it could provide better tip localization results, especially if the scan plane is much thinner than the 10mm baseline from \cite{AIMNeedleSteering}.
+
+% \subsection{Real-Time Control}
+% Since real-time needle guidance is the ultimate goal of the project, care should be taken that the chosen implementations do not preclude processing times less than the MRI scan rate. It would also be beneficial to experimental data collection if closed-loop insertion trials could be completed quickly.
+
+% \subsection{Slicer Module}
+% Releasing the above functionality as a Slicer extension would facilitate future research and extension by other groups. The robots used in the AIM Lab are generally designed to communicate via OpenIGTLink, which is already built into Slicer.
+% - Get more eyes on the research, facilitate transfer to future student
+
+% \subsection{Supporting Simulation Software}
+% The capability to conduct tests independent of the availability of MRI equipment and a suitable insertion platform is highly desirable, especially during the evaluation of steering algorithms. Two pieces of software separate from the Slicer module are required. The first is a kinematic simulator of the insertion robot that can conduct a constant-velocity insertion profile while publishing the pose and velocity of the base of the needle. The second is a simulated MRI scanner, which chooses a volumetric scan from a timestamped series to match the current state of the insertion platform and resections a 2D scan using the field of view and scan plane pose provided by the Slicer module. This combination of utilities will be sufficient to 
 
 % \section{Logistics}
 % \subsection{Schedule with Coursework}
@@ -185,70 +180,67 @@ The capability to conduct tests independent of the availability of MRI equipment
 %   \item Devise metrics to show improvement of new tracking algorithm compared to prior efforts.
 % \end{itemize}
 
-\section{Methods}
+% \section{Methods}
+% \subsection{Needle Detection}
+% - Need to sample cross-section points in imagery, to capture needles in "slices".
 
+% - Strategy is similar between different imaging modalities.
 
+% - In MRI, needle is inserted normal to the axial plane, so the axial slices contain cross-sections of the needle artifact. Threshold each slice to find dark regions, find contours in 2D, and assume that the centroid of the contour closest to the modeled needle is the coordinate of the needle section. Assumes a simplified model for needle artifacts and a limited range of needle insertion trajectories.
 
-\subsection{Needle Detection}
-- Need to sample cross-section points in imagery, to capture needles in "slices".
+% - Stereo video is used to track the needle in 3D through transparent tissue phantoms. Emulate behavior of MRI by finding coordinate of needle cross section in a specified plane. Assume needle moves nearly horizontally across camera images. Estimate needle tip coordinate from needle model. Take a column of pixels near the tip coordinate, threshold between light and dark pixels, and find the centroid of the dark region closest to the estimated tip coordinate. Assume that this point lies on the needle shaft. Using matching needle points found in each image, triangulate an estimated 3D point using camera intrinsic and extrinsic parameters. The degree of the polynomial curve fit is a variable that can be adjusted.
 
-- Strategy is similar between different imaging modalities.
+% - There are two strategies for measuring needle points. We could measure only points close to the tip of the needle. This gives us more updates close to the needle tip, but it assumes that the needle shaft exactly follows the trajectory of the tip, which doesn't hold in soft material. Another option is to resample at different points along the needle shaft. This could present problems in MRI, where each new imaging plane consumes scanning time, but it allows the entire needle model to be updated at once. The frequency of imaging and the spacing between resampling planes are variables.
 
-- In MRI, needle is inserted normal to the axial plane, so the axial slices contain cross-sections of the needle artifact. Threshold each slice to find dark regions, find contours in 2D, and assume that the centroid of the contour closest to the modeled needle is the coordinate of the needle section. Assumes a simplified model for needle artifacts and a limited range of needle insertion trajectories.
+% \subsection{Needle Insertion Platform}
+% - Used a simple PLA needle guide to center the needle on the phantom during MRI data collection. Plastic spacers on the needle shaft allow the needle base pose to be calculated at each insertion step.
 
-- Stereo video is used to track the needle in 3D through transparent tissue phantoms. Emulate behavior of MRI by finding coordinate of needle cross section in a specified plane. Assume needle moves nearly horizontally across camera images. Estimate needle tip coordinate from needle model. Take a column of pixels near the tip coordinate, threshold between light and dark pixels, and find the centroid of the dark region closest to the estimated tip coordinate. Assume that this point lies on the needle shaft. Using matching needle points found in each image, triangulate an estimated 3D point using camera intrinsic and extrinsic parameters. The degree of the polynomial curve fit is a variable that can be adjusted.
+% - Used 6-DOF insertion robot during visual needle tracking evaluation. Needle pitch and yaw and translational elements are set before insertion, while needle depth and role are controlled throughout insertion.
 
-- There are two strategies for measuring needle points. We could measure only points close to the tip of the needle. This gives us more updates close to the needle tip, but it assumes that the needle shaft exactly follows the trajectory of the tip, which doesn't hold in soft material. Another option is to resample at different points along the needle shaft. This could present problems in MRI, where each new imaging plane consumes scanning time, but it allows the entire needle model to be updated at once. The frequency of imaging and the spacing between resampling planes are variables.
+% \subsection{Software Architecture}
+% - OpenIGTLink to and from robot, can use Slicer to simulate robot comms
 
-\subsection{Needle Insertion Platform}
-- Used a simple PLA needle guide to center the needle on the phantom during MRI data collection. Plastic spacers on the needle shaft allow the needle base pose to be calculated at each insertion step.
+% - MRI control via OpenIGTLink. Pick scan planes and field of view.
 
-- Used 6-DOF insertion robot during visual needle tracking evaluation. Needle pitch and yaw and translational elements are set before insertion, while needle depth and role are controlled throughout insertion.
+% - INSERT SYSTEM DIAGRAM FIGURE
 
-\subsection{Software Architecture}
-- OpenIGTLink to and from robot, can use Slicer to simulate robot comms
+% - Module for real-time needle tracking in MRI.
 
-- MRI control via OpenIGTLink. Pick scan planes and field of view.
+% - Listener registered to volume from MRI, runs segmentation when callback is triggered by update
 
-- INSERT SYSTEM DIAGRAM FIGURE
+% - Simple ITK used for segmentation, VTK used for homogeneous transforms
 
-- Module for real-time needle tracking in MRI.
+% \subsection{Experimental Setup}
+% - MRI data collected for a homogeneous agar gelatin phantom. Needle inserted at regular intervals, full volume collected using XX protocol. Voxel size of 0.4mm x 0.4mm x 0.5mm. Compare estimated tip position from model against manually-labeled tip positions in each volume.
 
-- Listener registered to volume from MRI, runs segmentation when callback is triggered by update
+% - Stereo vision localization validates real-time approach and communication with robot. Insert needle into homogeneous plastisol phantom with stiffness XX
 
-- Simple ITK used for segmentation, VTK used for homogeneous transforms
+% - Use robotic insertion platform detailed in previous paper [cite Marek]
 
-\subsection{Experimental Setup}
-- MRI data collected for a homogeneous agar gelatin phantom. Needle inserted at regular intervals, full volume collected using XX protocol. Voxel size of 0.4mm x 0.4mm x 0.5mm. Compare estimated tip position from model against manually-labeled tip positions in each volume.
+% \section{Results}
+% - Note: fill in with actual results
 
-- Stereo vision localization validates real-time approach and communication with robot. Insert needle into homogeneous plastisol phantom with stiffness XX
+% \subsection{Stereo Needle Tracking}
+% - Competing standard would be manually-labeled needle points and tip orientation
 
-- Use robotic insertion platform detailed in previous paper [cite Marek]
+% - With live tracking, can show that we actually successfully track the needle to a target
 
-\section{Results}
-- Note: fill in with actual results
+% - Try for simple case (no rotation) and increasingly rigorous cases (thin needle, many curves, significant deflection)
 
-\subsection{Stereo Needle Tracking}
-- Competing standard would be manually-labeled needle points and tip orientation
+% - Methods to evaluate:
 
-- With live tracking, can show that we actually successfully track the needle to a target
+% - linear and polynomial regression for all needle points
 
-- Try for simple case (no rotation) and increasingly rigorous cases (thin needle, many curves, significant deflection)
+% - Piecewise polynomial minimum bending energy model (3rd and 5th degree)
 
-- Methods to evaluate:
+% - Track tip positions vs resample along needle shaft
 
-- linear and polynomial regression for all needle points
+% - Plots: Example insertion for each with curve overlaid. Error for tip pose.
 
-- Piecewise polynomial minimum bending energy model (3rd and 5th degree)
+% \subsection{MRI Needle Tracking}
+% - MRI data is limited and very simple: no rotation, deflection in just one direction. Can't do live tracking. Need to show that model accurately finds needle points in each slice and gives a good estimate of the needle tip pose.
 
-- Track tip positions vs resample along needle shaft
-
-- Plots: Example insertion for each with curve overlaid. Error for tip pose.
-
-\subsection{MRI Needle Tracking}
-- MRI data is limited and very simple: no rotation, deflection in just one direction. Can't do live tracking. Need to show that model accurately finds needle points in each slice and gives a good estimate of the needle tip pose.
-
-- Plots: Curves overlaid on scans.
+% - Plots: Curves overlaid on scans.
 
 
 

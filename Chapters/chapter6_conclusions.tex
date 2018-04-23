@@ -1,32 +1,47 @@
-\chapter{Conclusions and Future Extension}
-\label{conclusions} % Always give a unique label
+\chapter{Discussion and Conclusion}
+\label{sec:conclusions} % Always give a unique label
 
 
 \section{Discussion}
-- Resampling needle cross sections produces a better needle model than only tracking the tip, since the needle shaft deflects because of the elasticity of the phantom material.
+\subsection{MRI Experiment}
+The experimental results show that important parts of closed-loop model-guided needle localization work in conjunction. The needle artifact centroids are all correctly identified by using the closest thresholded region to the estimated needle position in the scan, even when other large non-needle artifacts are present.
 
-- Linear regression is inadequate. Lowish-order polynomial regression works decently if there are many measurements and if the needle isn't subject to multiple bends.
+The length constraint allows the needle curve to extend beyond the furthest sampled point into the tip artifact region.
 
-- Minimum bending energy curve fitting works well with fewer data points than regression, but it can be slow if the initial estimates are not near to the final parameters, or if many curve segments are to be solved at the same time. There isn't any particular benefit to working with higher-degree polynomials, especially if the measured needle points are only associated with the end points of the curves.
+The error relative to the artifact cross-section centroid outside the tip artifact region is less than 0.5mm, which is comparable to other work in needle localization in US\cite{rossa_adaptive_2016} and MRI\cite{song_biopsy_2012}. The error is high in the tip artifact region because the artifact is lopsided and its centroid is not located on the needle shaft.
 
-- MBE for a single curve is less accurate than a piecewise curve, but the complexity of implementation and the time to solve is greatly reduced.
+The linear model exhibits significant error relative to the baseline and misrepresents the deflection of the needle for a majority of its length. Choosing a high-degree polynomial does not produce a significant reduction in error since the needle trajectory in the MRI dataset exhibited deflection only in one direction.
+
+In general, the concept of modeling the needle shape by sampling needle cross-sections in MRI is sound and could be extended for real-time applications.
+
+% \subsection{Stereo Tracking Experiment}
+% Model still works even when the needle is made to do increasingly weird things.
+
+% Demonstrates imaging-agnostic nature of needle modeling architecture. Low-level code is identical between implementations.
+
+\subsection{Needle Model}
+The bending energy model is able to produce a good fit for the needle with very few sampled points. It does not over-fit, even when the small number of sample points would otherwise underconstrain the model. The curve between sample points approximately matches the actual position of the needle. 
+
+Optimization takes a long time to converge to a solution, between 5 to 10 seconds depending on the constraints (Lenovo ThinkPad P50, Intel Xeon CPU E3-1505M v5 @ 2.80GHz, 16 GB RAM). Constraints on the needle length and the average error contribute to increased processing time. This is not an obstacle for an offline experiment, but it could present issues for real-time imaging. Improvements to the total processing time are feasible.
+
+Minimum bending energy curve fitting works well with a small number of samples compared to a least-squares curve fit using a large number of samples. Linear regression is inadequate. Lowish-order polynomial regression works decently if there are many measurements and if the needle isn't subject to multiple bends.
+
+The bending energy minimization approach is not guaranteed to provide a feasible solution for every possible combination of constraints an sample points.
+
 
 \section{Future Work}
-- Need to implement communication with the MRI scanner to programmatically control scan planes, fields of view, protocols, etc. This was done previously as part of Nirav's PhD work but it was limited to a specific model of scannerl.
+An important follow-on will be to demonstrate real-time tracking using live MRI imaging. This will require implementation of a communication protocol that transmits scan plane poses to the MRI controller and listens for new image data. Precedent exists for controlling an MRI scanner in this way\cite{patel_closed-loop_2015}.
 
-- Need better needle control algorithms to steer the needle along a trajectory, rather than just to a target point. 
+The time required to compute the needle curve optimization is very high and not currently suited for real-time operation. Reducing the number of numerical approximations in the optimization function would probably reduce the computational load, as would rewriting the needle modeling Python packages in C++.
 
-- Demonstrate MRI simulation of needle artifacts
+\section{Conclusion}
+This thesis presented a closed-loop model-based needle localization strategy agnostic to the imaging modality. A simulated multi-step needle insertion in MRI was tracked, and the error between the estimated position of the needle shaft from the model and the measured position of the centroid of the needle artifact was comparable to published needle localization approaches. The bending energy minimization approach produces accurate curve fits using a small number of  images by also considering the kinematics of the insertion platform. While not extensively explored in this work, the parametric polynomial needle curve and the concept of planning scan planes using the curve could work for a very wide array of needle trajectories, including loops and other paths rarely explored in other literature.
 
-- Package and release stereo vision system and software
+% Volumetric imaging would present several benefits to 3D tracking, but the comparatively long scan times required (30 seconds according to \cite{BiopsyReview}) would limit its usefulness for real-time control in situations representative of clinical use. If the two-plane approach goes together easily, then I will pursue more advanced imaging methods.
 
-- Demonstrate MRI needle tracking using an actual MRI machine during a live insertion.
+% It is expensive and time-consuming to test on actual MRI hardware. A needle insertion software simulation that returned MR-style imagery would be useful for early testing and development. This could probably be developed from a high-resolution 3D volumetric scan of a representative pelvic region.
 
-Volumetric imaging would present several benefits to 3D tracking, but the comparatively long scan times required (30 seconds according to \cite{BiopsyReview}) would limit its usefulness for real-time control in situations representative of clinical use. If the two-plane approach goes together easily, then I will pursue more advanced imaging methods.
-
-It is expensive and time-consuming to test on actual MRI hardware. A needle insertion software simulation that returned MR-style imagery would be useful for early testing and development. This could probably be developed from a high-resolution 3D volumetric scan of a representative pelvic region.
-
-The computer vision needle tracking software I developed in Spring 2017 is a useful tool for evaluating needle control methods, and I could continue developing it through 2018.
+% The computer vision needle tracking software I developed in Spring 2017 is a useful tool for evaluating needle control methods, and I could continue developing it through 2018.
 
 
 % \section{Summary of Work and Contributions}

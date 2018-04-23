@@ -28,6 +28,8 @@
 \usepackage{caption}
 \usepackage{epigraph}
 \usepackage{setspace}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
 %\usepackage[hypertex]{hyperref}
 
@@ -58,12 +60,13 @@
 
 \begin{document}
 
-\title{IMPROVEMENTS TO MRI NEEDLE LOCALIZATION THROUGH KINEMATIC AND DYNAMIC MODELING}
+% \title{{A BEAM-BENDING MODEL} FOR {IMPROVED NEEDLE LOCALIZATION} IN {MRI}}
+\title{A MINIMUM-BENDING-ENERGY NEEDLE MODEL FOR CLOSED-LOOP LOCALIZATION DURING IMAGE-GUIDED INSERTION}
 \author{Joseph Schornak}
 \degreemonth{May}
 \degreeyear{2018}
-% \dissertation
-% \doctorphilosophy
+\dissertation
+\doctorphilosophy
 \copyrightnotice
 
 % add your chapters, best way is to have separate TeX files for each chapter
@@ -71,8 +74,8 @@
 \include{./Chapters/chapter1_intro}
 \include{./Chapters/chapter2_priorart}
 \include{./Chapters/chapter3_needlemodeling}
-\include{./Chapters/chapter4_cameratracking}
-\include{./Chapters/chapter5_mritracking}
+\include{./Chapters/chapter4_mritracking}
+% \include{./Chapters/chapter5_cameratracking}
 \include{./Chapters/chapter6_conclusions}
 
 %% REFERENCES
@@ -81,5 +84,7 @@
 \def\dsp{\def\baselinestretch{1.25}\large\normalsize}
 \bibliographystyle{IEEEtran}
 \bibliography{Zotero}
+% \bibliography{Thesis_Needle_Guidance}
+
 \end{spacing}
 \end{document}
