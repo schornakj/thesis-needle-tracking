@@ -1,16 +1,17 @@
 \chapter{Discussion and Conclusion}
 \label{sec:conclusions} % Always give a unique label
 
-
 \section{Discussion}
 \subsection{MRI Experiment}
 The experimental results show that important parts of closed-loop model-guided needle localization work in conjunction. The needle artifact centroids are all correctly identified by using the closest thresholded region to the estimated needle position in the scan, even when other large non-needle artifacts are present.
 
 The length constraint allows the needle curve to extend beyond the furthest sampled point into the tip artifact region.
 
-The error relative to the artifact cross-section centroid outside the tip artifact region is less than 0.5mm, which is comparable to other work in needle localization in US\cite{rossa_adaptive_2016} and MRI\cite{song_biopsy_2012}. The error is high in the tip artifact region because the artifact is lopsided and its centroid is not located on the needle shaft.
+The error relative to the artifact cross-section centroid outside the tip artifact region is less than 0.5mm, which is comparable to other work in needle localization in US\cite{rossa_adaptive_2016} and MRI\cite{song_biopsy_2012}. The error is high in the tip artifact region because the artifact is lopsided and its centroid is not located on the needle shaft, but this is a shortcoming in the baseline dataset and does not reflect the error relative to the actual position of the needle. Extending the dataset to include a CT scan at each needle insertion step would provide a superior baseline along the entire length of the needle.
 
-The linear model exhibits significant error relative to the baseline and misrepresents the deflection of the needle for a majority of its length. Choosing a high-degree polynomial does not produce a significant reduction in error since the needle trajectory in the MRI dataset exhibited deflection only in one direction.
+The linear model exhibits significant error relative to the baseline and misrepresents the shape of the needle for a majority of its length. Choosing a high-degree polynomial does not produce a significant reduction in error since the needle trajectory in the MRI dataset exhibited deflection only in one direction.
+
+Increasing the number of observation points along the length of the needle does not reduce the error relative to the baseline, provided that the points are spaced evenly along the portion of the needle visible in imaging.
 
 In general, the concept of modeling the needle shape by sampling needle cross-sections in MRI is sound and could be extended for real-time applications.
 
@@ -42,45 +43,3 @@ This thesis presented a closed-loop model-based needle localization strategy agn
 % It is expensive and time-consuming to test on actual MRI hardware. A needle insertion software simulation that returned MR-style imagery would be useful for early testing and development. This could probably be developed from a high-resolution 3D volumetric scan of a representative pelvic region.
 
 % The computer vision needle tracking software I developed in Spring 2017 is a useful tool for evaluating needle control methods, and I could continue developing it through 2018.
-
-
-% \section{Summary of Work and Contributions}
-% An overview of this work is presented below with a summary of contributions and lessons learned along the way.
-
-% \begin{itemize}
-% \item
-% \textbf{Contribution 1}
-
-% Contribution 1
-
-% \item
-% \textbf{Contribution 2}
-
-% Contribution 2
-
-% \item
-% \textbf{Contribution 3}
-
-% Contribution 3
-
-% \end{itemize}
-
-% \section{Impact and Future Work}
-% The research presented in this dissertation addresses several major challenges.
-
-% %\begin{itemize}
-% \textbf{Impact}
-
-% Here is the impact of my work.
-
-% %\item 
-% \textbf{Lessons Learned}
-
-% Some lessons I've learned.
-
-% %\item 
-% \textbf{Future Work}
-
-% Future work includes...
-
-%\end{itemize}

@@ -21,11 +21,12 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{roesthuis_mechanics-based_2012}
-R.~J. Roesthuis, M.~Abayazid, and S.~Misra, ``Mechanics-based model for
-  predicting in-plane needle deflection with multiple bends,'' in \emph{2012
-  4th {{IEEE RAS EMBS International Conference}} on {{Biomedical Robotics}} and
-  {{Biomechatronics}} ({{BioRob}})}, Jun. 2012, pp. 69--74.
+\bibitem{tokuda_-bore_2012}
+J.~Tokuda, K.~Tuncali, I.~Iordachita, S.-E. Song, A.~Fedorov, S.~Oguro,
+  A.~Lasso, F.~M. Fennessy, C.~M. Tempany, and N.~Hata, ``In-bore setup and
+  {{Software}} for {{3T MRI}}-guided {{Transperineal Prostate Biopsy}},''
+  \emph{Physics in medicine and biology}, vol.~57, no.~18, pp. 5823--5840, Sep.
+  2012.
 
 \bibitem{misra_mechanics_2010}
 S.~Misra, K.~Reed, B.~Schafer, K.~Ramesh, and A.~Okamura,
@@ -33,6 +34,12 @@ S.~Misra, K.~Reed, B.~Schafer, K.~Ramesh, and A.~Okamura,
   Steered}} through {{Soft Tissue}}},'' \emph{\BIBforeignlanguage{en}{The
   International Journal of Robotics Research}}, vol.~29, no.~13, pp.
   1640--1660, Nov. 2010.
+
+\bibitem{roesthuis_mechanics-based_2012}
+R.~J. Roesthuis, M.~Abayazid, and S.~Misra, ``Mechanics-based model for
+  predicting in-plane needle deflection with multiple bends,'' in \emph{2012
+  4th {{IEEE RAS EMBS International Conference}} on {{Biomedical Robotics}} and
+  {{Biomechatronics}} ({{BioRob}})}, Jun. 2012, pp. 69--74.
 
 \bibitem{webster_nonholonomic_2006}
 R.~J. Webster, J.~S. Kim, N.~J. Cowan, G.~S. Chirikjian, and A.~M. Okamura,
@@ -71,11 +78,12 @@ N.~A. Patel, T.~van Katwijk, G.~Li, P.~Moreira, W.~Shang, S.~Misra, and G.~S.
   Conference}} of the {{IEEE Engineering}} in {{Medicine}} and {{Biology
   Society}} ({{EMBC}})}, Aug. 2015, pp. 4869--4874.
 
-\bibitem{vrooijink_real-time_2013}
-G.~J. Vrooijink, M.~Abayazid, and S.~Misra, ``Real-time three-dimensional
-  flexible needle tracking using two-dimensional ultrasound,'' in \emph{2013
-  {{IEEE International Conference}} on {{Robotics}} and {{Automation}}}, May
-  2013, pp. 1688--1693.
+\bibitem{vrooijink_needle_2014}
+G.~J. Vrooijink, M.~Abayazid, S.~Patil, R.~Alterovitz, and S.~Misra,
+  ``\BIBforeignlanguage{en}{Needle path planning and steering in a
+  three-dimensional non-static environment using two-dimensional ultrasound
+  images},'' \emph{\BIBforeignlanguage{en}{The International Journal of
+  Robotics Research}}, vol.~33, no.~10, pp. 1361--1374, Sep. 2014.
 
 \bibitem{pernelle_validation_2013}
 G.~Pernelle, A.~Mehrtash, L.~Barber, A.~Damato, W.~Wang, R.~T. Seethamraju,
@@ -111,13 +119,6 @@ J.~H. Youk, E.-K. Kim, M.~J. Kim, J.~Y. Lee, and K.~K. Oh,
   A Review Publication of the Radiological Society of North America, Inc}},
   vol.~27, no.~1, pp. 79--94, 2007 Jan-Feb.
 
-\bibitem{tokuda_-bore_2012}
-J.~Tokuda, K.~Tuncali, I.~Iordachita, S.-E. Song, A.~Fedorov, S.~Oguro,
-  A.~Lasso, F.~M. Fennessy, C.~M. Tempany, and N.~Hata, ``In-bore setup and
-  {{Software}} for {{3T MRI}}-guided {{Transperineal Prostate Biopsy}},''
-  \emph{Physics in medicine and biology}, vol.~57, no.~18, pp. 5823--5840, Sep.
-  2012.
-
 \bibitem{onik_ct-guided_1988}
 G.~Onik, E.~R. Cosman, T.~H. Wells, H.~I. Goldberg, A.~A. Moss, P.~Costello,
   R.~A. Kane, W.~I. Hoddick, and B.~Demas,
@@ -138,12 +139,15 @@ A.~V. D'amico, C.~M. Tempany, R.~Cormack, N.~Hata, M.~Jinzaki, K.~Tuncali,
   GUIDED PROSTATE BIOPSY}},'' \emph{The Journal of Urology}, vol. 164, no.~2,
   pp. 385--387, Aug. 2000.
 
-\bibitem{vrooijink_needle_2014}
-G.~J. Vrooijink, M.~Abayazid, S.~Patil, R.~Alterovitz, and S.~Misra,
-  ``\BIBforeignlanguage{en}{Needle path planning and steering in a
-  three-dimensional non-static environment using two-dimensional ultrasound
-  images},'' \emph{\BIBforeignlanguage{en}{The International Journal of
-  Robotics Research}}, vol.~33, no.~10, pp. 1361--1374, Sep. 2014.
+\bibitem{_3d_}
+``{{3D Slicer}},'' https://www.slicer.org/.
+
+\bibitem{fedorov_3d_2012}
+A.~Fedorov, R.~Beichel, J.~Kalpathy-Cramer, J.~Finet, J.-C. Fillion-Robin,
+  S.~Pujol, C.~Bauer, D.~Jennings, F.~Fennessy, M.~Sonka, J.~Buatti,
+  S.~Aylward, J.~V. Miller, S.~Pieper, and R.~Kikinis, ``{{3D Slicer}} as an
+  {{Image Computing Platform}} for the {{Quantitative Imaging Network}},''
+  \emph{Magnetic resonance imaging}, vol.~30, no.~9, pp. 1323--1341, Nov. 2012.
 
 \bibitem{lewin_needle_1996}
 J.~S. Lewin, J.~L. Duerk, V.~R. Jain, C.~A. Petersilge, C.~P. Chao, and J.~R.

@@ -17,27 +17,10 @@ A second Slicer module manages the needle tracking process. Figure \ref{fig:MRI_
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap5/MRINeedleTipTracker_module.png}
 \caption{User interface for MRINeedleTipTracker 3D Slicer module.}
 \label{fig:slicer_gui}
 \end{figure}
-
-% \begin{algorithm}
-% \caption{Needle Tracking in MRI}\label{alg:mri_tracking}
-% \begin{algorithmic}[1]
-% \Procedure{Track Needle}{$coords_{needle},L_{needle},poly_{prev}$}
-% \State $t \gets CalculateParameters(coords_{needle}, L_{needle})$
-% \If {$poly_{prev} is None$}
-% 	\State $poly_{init} \gets LeastSquares(coords_{needle})$
-% \Else
-% 	\State $poly_{init} \gets poly_{prev}$
-% \EndIf
-% \State $cons \leftarrow DefineConstraints(t, coords_{needle}, L_{needle})$
-% \State $poly_{opt} \gets DoOptimization(poly_{init}, cons)$
-% \State \textbf{return} $poly_{opt}$
-% \EndProcedure
-% \end{algorithmic}
-% \end{algorithm}
 
 \section{Experiment}
 
@@ -47,8 +30,8 @@ Several assumptions made to reduce the complexity of the experiment and facilita
 
 \begin{itemize}
 \item A single beveled-tip clinical-style biopsy needle is to be inserted and tracked.
-\item The initial vector of the needle is normal to the axial plane.
-\item Only homogeneous gelatin or plastic tissue phantoms are used during experiments. The problem of identifying the needle in the presence of anatomy or other clutter is not addressed.
+\item The initial vector of the needle is normal to the axial plane, and the actual pose of the needle base exactly matches the recorded pose.
+\item Only homogeneous gelatin tissue phantoms are considered. The problem of identifying the needle in the presence of anatomy or other clutter is not addressed.
 \item New MR data is acquired and transmitted instantaneously.
 \end{itemize}
 
@@ -89,14 +72,22 @@ The baseline for the position of the needle shaft in the phantom was established
 
 \subsection{Needle Localization at a Single Timestep}
 \label{sec:mri_single_timestep}
-At the start of curve optimization using data from an individual insertion step the needle is assumed to be a vector with magnitude matching the length of the needle. The sampling locations are offset from the estimated position of the needle tip by a user-configurable distance to avoid sampling points within the tip artifact. In this experiment the tip offset was 5mm, the sample spacing was 10mm, and the number of samples was 3. The models under comparison use 1st-, 3rd-, 5th-, and 7th-degree polynomials.
+At the start of curve optimization using data from an individual insertion step the needle is assumed to be a vector with magnitude matching the length of the needle. The sampling locations are offset from the estimated position of the needle tip by a user-configurable distance to avoid sampling points within the tip artifact.
 
-Figure \ref{fig:results_error_comparison} shows the relative error using a 1st-, 3rd-, 5th-, and 7th-degree polynomials. 
+Figure \ref{fig:results_error_comparison} shows the relative error using a 1st-, 3rd-, 5th-, and 7th-degree polynomials. The tip offset $\delta=5.0mm$, the sample spacing $d=26.0mm$, and the number of observed slices $k=3$. 
+
+Figure \ref{fig:results_sample_comparison} show the effect on error relative to baseline as the number of slices observed over the length of the needle is increased. 
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/errors_polynomials_3_samples.png}
-\caption{Magnitude of in-plane error over insertion for various degrees of polynomial.}
+\caption{Magnitude of in-plane error over insertion for various degrees of polynomial. Markers indicate the positions of the slices on the needle curve. $d=26.0mm$, $k=3$, $\delta=5.0mm$}
 \label{fig:results_error_comparison}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/chap5/errors_more_samples.png}
+\caption{Magnitude of in-plane error over insertion for a variable number of sample points. $n=5$, $\delta=5.0mm$}
+\label{fig:results_sample_comparison}
 \end{figure}
 
 \begin{figure}[h]
@@ -105,34 +96,10 @@ Figure \ref{fig:results_error_comparison} shows the relative error using a 1st-,
 \label{fig:curve_fit_artifact}
 \end{figure}
 
-% \begin{figure}[h]
-% \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curvepoints_1501_1deg_3p_10mm.png}
-% \caption{Magnitude of in-plane error over insertion depth using a linear model.}
-% \label{fig:results_error_linear}
-% \end{figure}
-
-% \begin{figure}[h]
-% \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curvepoints_1501_3deg_3p_10mm.png}
-% \caption{Magnitude of in-plane error over insertion depth for the needle mechanical model using a 3rd-degree polynomial.}
-% \label{fig:results_error_3rd}
-% \end{figure}
-
-% \begin{figure}[h]
-% \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curvepoints_1501_5deg_3p_10mm.png}
-% \caption{Magnitude of in-plane error over insertion depth for the needle mechanical model using a 5th-degree polynomial.}
-% \label{fig:results_error_5th}
-% \end{figure}
-
-% \begin{figure}[h]
-% \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curvepoints_1501_7deg_3p_10mm.png}
-% \caption{Magnitude of in-plane error over insertion depth for the needle mechanical model using a 7th-degree polynomial.}
-% \label{fig:results_error_7th}
-% \end{figure}
-
 \subsection{Needle Localization at Sequential Timesteps}
-Needle tracking in a sequence of images consists of repeated application of the method for an individual timestep described in \ref{sec:mri_single_timestep}. The optimized curve from the previous localization step is used as the initial estimate for the next localization step. The curve was a 5th-degree polynomial. Three sample points were selected, starting 5mm from the tip and spaced 10mm apart.
+Needle tracking in a sequence of images consists of repeated application of the method for an individual timestep described in \ref{sec:mri_single_timestep}. The optimized curve from the previous localization step is used as the initial estimate for the next localization step. The curve was a 5th-degree polynomial. Three slice planes were selected, starting 5mm from the tip and spaced 10mm apart.
 
-Figure \ref{fig:scan_slices} shows the positions of the scan planes and Figure \ref{fig:curve_points} shows points along the optimized curve for each insertion interval. Figure \ref{fig:curve_errors_fixed_spacing} shows the magnitude of error relative to the baseline for the optimized curve at each interval. Figure \ref{fig:curve_errors_variable_spacing} shows the magnitude of error when the spacing between the sample points is increased as the needle is inserted.
+Figure \ref{fig:scan_slices} shows the positions of the scan planes and Figure \ref{fig:curve_points} shows points along the optimized curve for each insertion interval. Figure \ref{fig:curve_errors_fixed_spacing} shows the magnitude of error relative to the baseline for the optimized curve at each interval. Figure \ref{fig:curve_errors_variable_spacing} shows the magnitude of error when the spacing between the slices is increased as the needle is inserted.
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/scan_slices.png}
@@ -148,35 +115,14 @@ Figure \ref{fig:scan_slices} shows the positions of the scan planes and Figure \
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curve_3_10.png}
-\caption{Magnitude of error between the needle model and the artifact centroid. $\delta=5mm$, $k=3$, $d=10mm$}
+\caption{Magnitude of error between the needle model and the artifact centroid.  $d=10mm$, $k=3$, $\delta=5mm$}
 \label{fig:curve_errors_fixed_spacing}
 \end{figure}
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curve_3_var.png}
-\caption{Magnitude of error between the needle model and the artifact centroid, where the spacing between each slice increases with insertion depth.  $\delta=5mm$, $k=3$, $d=10mm + i_{step}*4mm$}
+\caption{Magnitude of error between the needle model and the artifact centroid, where the spacing between each slice increases with insertion depth.  $d=10mm + index_{step}*4mm$, $k=3$, $\delta=5mm$ }
 \label{fig:curve_errors_variable_spacing}
 \end{figure}
 
 
-
-% Figures \ref{fig:results_error_poly_3rd} and \ref{fig:results_error_poly_7th} show the relative error using, respectively, a 3rd-degree and a 7th-degree polynomial least-squares fit. This model is a better fit than the linear fit, but the higher-degree polynomial overfits the small number of datapoints and introduces sharp turns that are not representative of the mechanical behavior of the needle. Additionally, the directions of these curves at the base and tip do not reflect the actual behavior of the needle.
-
-% \begin{figure}[h]
-% \includegraphics[width=8cm]{Fig/placeholder.jpg}
-% \caption{Magnitude of in-plane error over insertion depth using a 3rd-order polynomial least-squares fit.}
-% \label{fig:results_error_poly_3rd}
-% \end{figure}
-
-% \begin{figure}[h]
-% \includegraphics[width=8cm]{Fig/placeholder.jpg}
-% \caption{Magnitude of in-plane error over insertion depth using a 7th-order polynomial least-squares fit.}
-% \label{fig:results_error_poly_7th}
-% \end{figure}
-
-
-% \begin{figure}[h]
-% \includegraphics[width=8cm]{Fig/placeholder.jpg}
-% \caption{Magnitude of needle tip pose orientation error for each type of needle model.}
-% \label{fig:pose_error}
-% \end{figure}
