@@ -1,17 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%% chapter.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% sample chapter
-%
-% Use this file as a template for your own input.
-%
-%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\begin{savequote}[8cm]
-%  ``Veni, vidi, vici.''
-%  \qauthor{Julius Caesar}
-%\end{savequote}
-
-
 \chapter{Review of Previous Work}
 \label{sec:lit_review} % Always give a unique label
 % use \chaptermark{}
@@ -30,7 +16,7 @@ Beveled-tip needles deflect during insertion due to asymmetric cutting force at 
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap2/misra_tip_forces.png}
 \caption{Free-body diagram depicting forces acting on the needle tip during insertion into an elastic medium\cite{misra_mechanics_2010}.}
 \label{fig:tip_forces}
 \end{figure}
@@ -47,7 +33,7 @@ The non-holonomic kinematics of a beveled-tip needle can be represented by model
 \label{fig:webster_nonholonomic_model}
 \end{figure}
 
-Subsequent work accounts for forces on the needle that cannot be modeled as components of the steering angle, such as dynamic friction and torsion in the needle shaft\cite{reed*_modeling_2009, swensen_torsional_2014}.
+Subsequent work accounts for forces on the needle that cannot be modeled as components of the steering angle, such as dynamic friction and torsion in the needle shaft\cite{reed_modeling_2009, swensen_torsional_2014}.
 
 \subsection{Finite Element Models}
 Finite Element (FE) modeling of the needle and surrounding medium addresses some of the drawbacks of the kinematic needle model, such as the ability to model inconsistent deflection when inserting through nonhomogeneous tissue\cite{goksel_modeling_2009}. FEM-based approaches use several types of finite elements, including angular springs and beam elements. While the problem is often simplified as a 2D mesh in a plane, the approach is extensible to 3D\cite{chentanez_interactive_2009}.
@@ -90,15 +76,21 @@ Curved- or kinked-tip needles use similar mechanical principles to steer as beve
 \label{fig:kinked_tip}
 \end{figure}
 
-Concentric-tube needles consist of several nested pre-bent tubes\cite{webster_mechanics_2009}. The needle can be actively curved or straightened by rotating the tubes so their directions of curvature are aligned or in opposition. These needles experience potentially-undesired releases of energy when the concentric elements snap between equilibrium states.
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/chap2/actuated_tip_needle.png}
+\caption{Custom-manufactured steerable needle with an actuated tip and Fiber Bragg Grating strain gauges\cite{roesthuis_modeling_2015}.}
+\label{fig:actuated_tip}
+\end{figure}
+
+Concentric-tube needles consist of several nested pre-bent tubes\cite{webster_mechanics_2009, rucker_geometrically_2010, dupont_design_2010-1}. The needle can be actively curved or straightened by rotating the tubes so their directions of curvature are aligned or in opposition. These needles experience potentially-undesired releases of energy when the concentric elements snap between equilibrium states.
 
 - Problems with these approaches, and with approaches that use custom needles in general, is that there aren't any clinically-available biopsy needles of these types. Need to be able to steer straight beveled-tip needles if we want to use what's out there right now.
 
 - Potential for tissue damage along insertion trajectory is risky.
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
-\caption{Example of a steerable concentric-tube needle\cite{webster_mechanics_2009}.}
+\includegraphics[width=1.0\textwidth]{Fig/chap2/concentric_needle.png}
+\caption{Example of a steerable concentric-tube needle\cite{rucker_geometrically_2010}.}
 \label{fig:concentric_tubes}
 \end{figure}
 
@@ -129,8 +121,8 @@ A risk with imaging in a plane parallel to the needle shaft is potential loss of
 Imaging in the plane normal to the needle shaft captures the needle in cross-section. This avoids the problem of imaging in a plane that does not contain the needle, but it is more challenging to find the plane containing the needle tip. For US scanning the transducer can be mounted on a motorized platform and moved in synchronization with the needle base to capture the same point on the needle in cross-section throughout insertion\cite{carriere_needle_2015,rossa_adaptive_2016}.
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
-\caption{Needle tracking in US via imaging in the transverse plane\cite{vrooijink_real-time_2013}.}
+\includegraphics[width=1.0\textwidth]{Fig/chap2/vrooijink_US_tracking.png}
+\caption{Needle tracking in US via imaging in the transverse plane\cite{vrooijink_needle_2014}.}
 \label{fig:transverse_planes_us}
 \end{figure}
 
@@ -138,7 +130,7 @@ Imaging in the plane normal to the needle shaft captures the needle in cross-sec
 NeedleFinder is a 3D Slicer extension for needle localization and segmentation\cite{pernelle_validation_2013}. Given a manually-selected tip position, NeedleFinder searches through sequential axial scan planes and finds the cross-sections of the voids created by needle and catheter artifacts in each layer. An angular-spring finite element model defined by the shape and stiffness of the needle is fit to the detected needle points. Manual selection of the needle tips is required because of the difficulty of automatically distinguishing the needles from anatomical features and noise in the MR images.
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap2/needlefinder.png}
 \caption{Catheters semi-automatically segmented in 3D MRI data using the NeedleFinder Slicer extension\cite{pernelle_validation_2013}.}
 \label{fig:needlefinder}
 \end{figure}
@@ -151,7 +143,7 @@ In both US and MR images, the time required to resolve a 3D volume is higher tha
 An alternative method for detecting the position and shape of the needle is to add sensors to the needle to directly measure its deflection. One approach is to embed Fiber Bragg Grating optical sensors into the shaft of the needle\cite{roesthuis_three-dimensional_2014}. These sensors measure the strain in the needle as it bends and allow the shape of the needle to be calculated throughout insertion to achieve robotic steering. This approach requires specially-modified needles, precluding the use of common clinical-style biopsy needles.
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap2/fbg_needle.png}
 \caption{Placement of Fiber Bragg Grating sensors on a specially-modified needle\cite{roesthuis_three-dimensional_2014}.}
 \label{fig:needle_fbg}
 \end{figure}

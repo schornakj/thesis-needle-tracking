@@ -1,17 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%% chapter.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% sample chapter
-%
-% Use this file as a template for your own input.
-%
-%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\begin{savequote}[8cm]
-%  ``Veni, vidi, vici.''
-%  \qauthor{Julius Caesar}
-%\end{savequote}
-
-
 \chapter{Needle Model}
 \label{sec:needlemodel} % Always give a unique label
 % use \chaptermark{}
@@ -261,19 +247,19 @@ Algorithm \ref{alg:update_curve_fit} shows the process of calculating polynomial
 \end{algorithm}
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap3/curvefit_pt1.png}
 \caption{Given a number of samples, the spacing between the samples, an offset distance from the needle tip, and a new needle base pose, the expected coordinate of the needle is calculated at each sample point.}
 \label{fig:curve_fit_pt1}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap3/curvefit_pt2.png}
 \caption{New imaging is collected at each needle coordinate, and the actual position of the needle is observed.}
 \label{fig:curve_fit_pt2}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap3/curvefit_pt3.png}
 \caption{A new polynomial curve is calculated, optimized to minimize both the cumulative bending energy in the needle and the error between the curve and the observed points.}
 \label{fig:curve_fit_pt3}
 \end{figure}
