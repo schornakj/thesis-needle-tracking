@@ -12,26 +12,23 @@
 % use \chaptermark{}
 % to alter or adjust the chapter heading in the running head
 
-The purpose of this experiment is to validate the parametric curve fit and needle model on imagery representative of what would be available from intraoperative imagery during an MRI-guided insertion.
-
-Assumptions about needles and conditions of insertion:
-\begin{itemize}
-\item A single beveled-tip clinical-style biopsy needle is inserted and tracked.
-\item The initial vector of the needle is normal to the axial plane.
-\item Only homogeneous gelatin or plastic tissue phantoms are used during experiments. The problem of identifying the needle in the presence of anatomy or other clutter is not addressed.
-\end{itemize}
-
 \section{Software Architecture}
 \subsection{Simulated MRI Scanner}
-Full 3D MRI volumes take a long time to produce, especially if high resolution is desired: the scan time for each volume used in this experiment was approximately 5 minutes. This is a prohibitively long time in the context of real-time intraoperative imaging, so the MRI would be configured to provide 2D scans in requested planes with limited field of view. To simulate this functionality, a  Slicer module was created to resection 2D slices from each 3D volumes at specified depths.
+Full 3D MRI volumes take a long time to produce, especially if high resolution is desired: the scan time for each volume used in this thesis was approximately 5 minutes. This is a prohibitively long time in the context of real-time intraoperative imaging, so the MRI would be configured to provide 2D scans in requested planes with limited field of view. To simulate this functionality, a  Slicer module was created to resection 2D slices from each 3D volumes at specified depths.
 
 \subsection{Needle Tracking Module}
-A second Slicer module manages the needle tracking process. Figure \ref{fig:MRI_architecture} shows the architecture of this module relative to the Slicer environment and the needle modeling utility. A linear transform node is set to match the pose of the needle base in each saved volume. When commanded by the operator, the module requests slices of the MRI volume at evenly-spaced coordinates along the shaft of the needle. The needle position in each section is calculated as the centroid of the thresholded region closest to the estimated position of the needle provided by the previous needle model curve. The position of the needle base is appended to this list of needle coordinates, and the combined list is used as one of the inputs for the needle curve optimization.
+A second Slicer module manages the needle tracking process. Figure \ref{fig:MRI_architecture} shows the architecture of this module relative to the Slicer environment and the needle modeling utility. A linear transform node is set to match the pose of the needle base in each saved volume. When commanded by the operator, the module requests slices of the MRI volume at evenly-spaced coordinates along the shaft of the needle. The thresholded image is grouped into contiguous regions, and the area and centroid are calculated for each region. The region with the centroid closest to the estimated position of the needle provided by the previous needle model curve is assumed to be the needle artifact, and the position of its centroid determines the observed position of the needle in this image. The position of the needle base is appended to this list of needle coordinates, and the combined list is used as one of the inputs for the needle curve optimization.
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/MRI_software_architecture.png}
 \caption{System architecture for needle detection and modeling from MRI data.}
 \label{fig:MRI_architecture}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\caption{User interface for MRINeedleTipTracker 3D Slicer module.}
+\label{fig:slicer_gui}
 \end{figure}
 
 % \begin{algorithm}
@@ -52,13 +49,20 @@ A second Slicer module manages the needle tracking process. Figure \ref{fig:MRI_
 % \end{algorithm}
 
 \section{Experiment}
+
+The purpose of this experiment is to validate the parametric curve fit and needle model on imagery representative of what would be available from intraoperative imagery during an MRI-guided insertion.
+
+Several assumptions made to reduce the complexity of the experiment and facilitate needle tracking are listed below.
+
+\begin{itemize}
+\item A single beveled-tip clinical-style biopsy needle is to be inserted and tracked.
+\item The initial vector of the needle is normal to the axial plane.
+\item Only homogeneous gelatin or plastic tissue phantoms are used during experiments. The problem of identifying the needle in the presence of anatomy or other clutter is not addressed.
+\item New MR data is acquired and transmitted instantaneously.
+\end{itemize}
+
 \subsection{MRI Data Collection}
-Two series of MRI volumes were captured in the 3T scanner at UMass Medical Center using a 3D Fast Field Echo protocol. The dimensions of each voxel are 0.4mm x 0.4mm x 0.5mm. The phantoms used were made of agar gelatin. The needle was a 150mm stainless steel (E = 200 GPa) clinical-style biopsy needle with a beveled tip and a diameter of 2mm. Removable plastic spacers with a thickness of 5.95mm regulated the insertion distance. In Insertion A two spacers were removed between scans, so the needle moves in increments of 11.9mm. In Insertion B one spacer was removed between scans, so the needle moves in increments of 5.95mm. The plastic alignment frame shown in Figure \ref{fig:needle_guide} kept the needle aligned along a known vector relative to the phantom. When used in conjunction the alignment frame and spacers allow the 6-DOF pose of the needle base to be calculated in each scan without the use of a Z-frame or external tracking equipment.
-
-\subsection{Needle Localization}
-Each volume was thresholded at intensity 1500 to isolate the needle artifact. The segmentation labelmap was exported and processed separately.
-
-The MRI volumes for each insertion step were loaded in sequence and a linear transform was set to match the pose of the needle base at each step. The needle localization algorithm was run on each dataset in turn to generate an array of points representing the simulated needle.
+The set of MRI volumes used in this experiment was captured in the 3T scanner at UMass Medical Center using a 3D Fast Field Echo protocol. The dimensions of each voxel are 0.4mm x 0.4mm x 0.5mm. The phantom used was made of agar gelatin. The needle was a 150mm stainless steel (E = 200 GPa) clinical-style biopsy needle with a beveled tip and a diameter of 2mm. Removable plastic spacers with a thickness of 5.95mm regulated the insertion distance. Two spacers were removed between scans, so the needle moves in increments of 11.9mm. Five scans were collected in total. The plastic alignment frame shown in Figure \ref{fig:needle_guide} kept the needle aligned along a known vector relative to the phantom. When used in conjunction the alignment frame and spacers allow the 6-DOF pose of the needle base to be calculated in each scan without the use of a Z-frame or external tracking equipment.
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/phantom_with_needle_guide_small_2.jpg}
@@ -66,13 +70,19 @@ The MRI volumes for each insertion step were loaded in sequence and a linear tra
 \label{fig:needle_guide}
 \end{figure}
 
+\subsection{Needle Localization}
+
+Each volume was thresholded at intensity 1500 to isolate the needle artifact. The segmentation labelmap was exported and processed separately.
+
+The MRI volumes for each insertion step were loaded in sequence and a linear transform was set to match the pose of the needle base at each step. The needle localization algorithm was run on each dataset in turn to generate an array of points representing the simulated needle.
+
 \section{Results}
 
-TODO: (Fu) "The model characterizes well the behavior of the needle with relatively small insertion distance (in Fig. 4.5, 4.6) and has a large error for large insertion depth, no matter the order of polynomial chosen, as noted in the discussion section. Is there any thought on how to improve the performance? If so, please include them in the discussion."
+% TODO: (Fu) "The model characterizes well the behavior of the needle with relatively small insertion distance (in Fig. 4.5, 4.6) and has a large error for large insertion depth, no matter the order of polynomial chosen, as noted in the discussion section. Is there any thought on how to improve the performance? If so, please include them in the discussion."
 
-TODO: (Fu) "Is it possible to compare the result with a dynamic model of the needle and vision-based state estimation?"
+% TODO: (Fu) "Is it possible to compare the result with a dynamic model of the needle and vision-based state estimation?"
 
-The baseline for the position of the needle shaft in the phantom was established by segmenting the needle artifact via thresholding and computing the centroid of its cross section in each axial scan slice. Figure \ref{fig:seg_2001} shows the segmentation for the final step of the insertion, and Figure \ref{fig:ground_truth_2001} shows the positions of the centroids in successive axial planes. The error for each model is computed as the difference between the centroid coordinate and the modeled coordinate in each slice.
+The baseline for the position of the needle shaft in the phantom was established by segmenting the needle artifact by intensity and computing the centroid of its cross section in every axial scan slice. Figure \ref{fig:seg_2001} shows the segmentation for the final step of the insertion, and Figure \ref{fig:ground_truth_2001} shows the positions of the centroids in successive axial planes. The error for each model is computed as the difference between the centroid coordinate and the modeled coordinate in each slice.
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/segmented_artifact_2001.png}
@@ -96,6 +106,12 @@ Figure \ref{fig:results_error_comparison} shows the relative error using a 1st-,
 \includegraphics[width=1.0\textwidth]{Fig/chap5/errors_polynomials.png}
 \caption{Magnitude of in-plane error over insertion for various degrees of polynomial.}
 \label{fig:results_error_comparison}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+\caption{Example polynomial curve fit plotted against the positions of the artifact centroids in transverse plane.}
+\label{fig:curve_fit_artifact}
 \end{figure}
 
 % \begin{figure}[h]
@@ -141,13 +157,13 @@ Figure \ref{fig:scan_slices} shows the positions of the scan planes and Figure \
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curve_3_10.png}
-\caption{Magnitude of error between the needle model and the artifact centroid. $\delta=5mm$, $k=3$, $d=10$}
+\caption{Magnitude of error between the needle model and the artifact centroid. $\delta=5mm$, $k=3$, $d=10mm$}
 \label{fig:curve_errors_fixed_spacing}
 \end{figure}
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curve_3_var.png}
-\caption{Magnitude of error between the needle model and the artifact centroid. Each line is a different insertion step.}
+\caption{Magnitude of error between the needle model and the artifact centroid, where the spacing between each slice increases with insertion depth.  $\delta=5mm$, $k=3$, $d=10mm + i_{step}*4mm$}
 \label{fig:curve_errors_variable_spacing}
 \end{figure}
 

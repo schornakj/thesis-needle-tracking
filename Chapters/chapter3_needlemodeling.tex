@@ -160,7 +160,8 @@ TODO: (Fu) Add additional constraint option for overall error
 
 \begin{equation}
 \label{eq:cost_function}
-C = \kappa \sum_{i=0}^k \epsilon_i + \frac{EI}{2}\int_{0}^{L}\frac{1}{\rho^2}dl
+% C = \kappa \sum_{i=0}^k \epsilon_i + \frac{EI}{2}\int_{0}^{L}\frac{1}{\rho^2}dl
+C = \frac{EI}{2} \int_{0}^{L} \frac{1}{\rho^2}dl
 \end{equation}
 
 While equality constraints can also be used to guide the optimized curve to intersect all the needle coordinates, this approach risks over-constraining the curve where the degree of the polynomial is close to the number of equality constraints.
@@ -179,14 +180,15 @@ While equality constraints can also be used to guide the optimized curve to inte
 % \end{equation}
 \subsection{Constraints}
 The optimization is constrained by Equation \ref{eq:base_position_constraint} such that the coordinates of the curve at t=0 matches the position of the base of the needle.
-\begin{equation}
-\label{eq:base_position_constraint}
-\begin{cases} X_{k=0} = a_0 \\
- Y_{k=0} = b_0  \\
- Z_{k=0} = c_0 \end{cases}
- \end{equation}
+% \begin{equation}
+% \label{eq:base_position_constraint}
+% \begin{cases} X_{k=0} = a_0 \\
+%  Y_{k=0} = b_0  \\
+%  Z_{k=0} = c_0 \end{cases}
+%  \end{equation}
  
  \begin{equation}
+ \label{eq:base_position_constraint}
  \textbf{V}_{k=0}=\begin{bmatrix} a_0 \\ b_0 \\ c_0 \end{bmatrix}
  \end{equation}
 
@@ -195,6 +197,11 @@ The optimization is also constrained by Equation \ref{eq:length_constraint} so t
 \begin{equation}
 \label{eq:length_constraint}
 L = \int_0^1 \sqrt[]{\frac{dx}{ds}^2 + \frac{dy}{ds}^2 + \frac{dz}{ds}^2} d\tau
+\end{equation}
+
+\begin{equation}
+\label{eq:rsme_constraint}
+\epsilon \geq \sqrt[]{\frac{\sum_{i=0}^{k}(V_i - V_{i, obs})^2}{k}}
 \end{equation}
 
 \begin{equation}
