@@ -1,20 +1,21 @@
 \chapter{Needle Model}
 \label{sec:needlemodel} % Always give a unique label
 
-The needle model presented in this thesis is based on minimizing the bending energy in the needle, which is represented as a beam and characterized as a parametric polynomial curve. The model is initialized with the mechanical properties of the needle and updated throughout insertion with the most recent pose of the needle base and the latest observed points on the needle shaft. This allows estimation of the shape of the needle using only a few new images without requiring an explicit model of the forces acting on the needle.
+The needle model presented in this thesis is based on minimizing the bending energy in the needle, which is represented as a beam and characterized as a parametric polynomial curve. The model is initialized with the mechanical properties of the needle and updated throughout insertion with the most recent needle base pose and the latest observed points on the needle shaft. This allows estimation of the shape of the needle using only a few new images without requiring an explicit model of the forces acting on the needle.
 
-Other existing needle modeling approaches account for bending energy, generally to determine the equilibrium state between the needle and the surrounding elastically-deformed tissue\cite{roesthuis_modeling_2015, misra_mechanics_2010, abayazid_integrating_2013}, but do not use bending energy to find the shape of the needle from observations.
+While other approaches to needle modeling account for bending energy, generally to determine the equilibrium state between the needle and the surrounding elastically-deformed tissue\cite{roesthuis_modeling_2015, misra_mechanics_2010, abayazid_integrating_2013}, they do not use bending energy to find the shape of the needle from observations.
 
-Mechanics-based models make restrictive assumptions about the trajectory of the needle by limiting the number bends in the needle shaft\cite{abayazid_integrating_2013}. Models that assume a single direction of insertion\cite{roesthuis_mechanics-based_2012, abayazid_integrating_2013} cannot represent the trajectories achievable with highly-flexible needles. By parameterizing the needle coordinates independently of the insertion direction or depth, this model can represent needles inserted in any direction relative to the scanner coordinate frame.
+Mechanics-based models make restrictive assumptions about the trajectory of the needle by limiting the number bends in the needle shaft\cite{abayazid_integrating_2013}. Models that assume a single direction of insertion\cite{roesthuis_mechanics-based_2012, abayazid_integrating_2013} cannot represent the trajectories achievable with highly-flexible needles. By parameterizing the needle coordinates independently of the insertion direction or depth, the model presented here can represent needles inserted in any direction relative to the scanner coordinate frame.
 
-Both nonholonomic kinematic models\cite{webster_nonholonomic_2006, reed_modeling_2009, swensen_torsional_2014} and mechanics-based beam bending models\cite{roesthuis_mechanics-based_2012, abayazid_integrating_2013} require extensive characterization of the properties of the needle and the tissue in order to accurately account for the tip and shaft loads placed on the needle. Tissue properties vary between tissue types and patients, and characterization of properties to the extent required by these models would probably not be possible to accomplish during a procedure. In contrast, the model introduced here does not require characterization of mechanical properties, since the constraints imposed on the needle by its interaction with surrounding tissue are observed through the shape of the needle during insertion.
+Both nonholonomic kinematic models\cite{webster_nonholonomic_2006, reed_modeling_2009, swensen_torsional_2014} and mechanics-based beam bending models\cite{roesthuis_mechanics-based_2012, abayazid_integrating_2013} require extensive characterization of the properties of the needle and the tissue in order to accurately account for the tip and shaft loads placed on the needle. Tissue properties vary between tissue types and patients, and characterization of these properties to the extent required by the needle models would probably not be practically achieveable during a procedure. In contrast, the model introduced here does not require characterization of mechanical properties, since the constraints imposed on the needle by its interaction with surrounding tissue are observed through the shape of the needle during insertion.
 
-In the context of needle localization in MRI, it would be very time-consuming to completely and precisely evaluate the state of the needle using only observations from imaging. The core idea of this model is to take a few observations and then determine the shape of the needle through optimization that meets those constraints as well as the constraints imposed by the mechanics of the needle. Provided that the observations of the needle allow characterization of the needle along the entire observable portion of its length, the needle model will be representative of the actual state of the needle to a degree of accuracy useable for guiding insertion and planning future imagery.
+In the context of needle localization in MRI, it would be very time-consuming to completely and precisely evaluate the state of the needle using only observations from imaging. The core idea of this model is to take a few observations in imaging and then determine the shape of the needle through optimization that meets those constraints as well as the constraints imposed by the mechanics of the needle. Provided that the observations of the needle are distributed along the entire observable portion of its length, the needle model will be representative of the actual state of the needle to a degree of accuracy useable for guiding insertion and planning future imagery.
 
-\section{Assumptions}
+\section{Assumptions and Definitions}
 As currently formulated, this model only considers straight needles with uniform stiffness and cross-section. Actuated devices such as flexible-tip needles and continuum robots are not considered. It is also assumed that the state of the needle relative to the camera frame is observable in imaging.
 
 The model uses the following information about the composition and state of the needle:
+
 \begin{itemize}
 \item 6-degree-of-freedom pose of the base of the needle, via the forward kinematics of the insertion robot
 \item Length of the needle
@@ -41,6 +42,7 @@ $s$ & parametric variable \\
 $U_B$ & transverse beam bending energy \\
 $v $ & magnitude of deflection relative to the needle neutral axis \\
 $\textbf{V}$ & vector, needle coordinate \\
+$\textbf{V}_{}obs$ & vector, needle coordinate observed in imaging \\
 $x \in X$ & \textbf{X-component}, set of X-components of needle coordinate \\
 $y \in Y$ & \textbf{Y-component}, set of Y-components of needle coordinate \\
 $z \in Z$ & \textbf{Z-component}, set of Z-components of needle coordinate \\
@@ -48,7 +50,7 @@ $z \in Z$ & \textbf{Z-component}, set of Z-components of needle coordinate \\
 \end{tabular}
 
 \section{Beam Bending Energy}
-The actual biopsy needle contains several parts with different mechanical properties, such as an inner rod that sides within an outer shell. Since these interactions are computationally expensive to model exactly and unnecessary to account for unless a very high degree of fidelity is desired, the model presented here simplifies the needle as a solid cylindrical beam and neglects the change in cross-sectional area at the needle tip. Under these assumptions $I$, the area moment of inertia of the needle in cross-section, is constant along the entire length of the needle, so the area moment of inertial can be simplified as Equation \ref{eq:beam_inertia}. 
+The actual biopsy needle contains several components with different mechanical properties, such as an inner rod that sides within an outer shell. Since these interactions are computationally expensive to model exactly and unnecessary to account for unless a very high degree of fidelity is desired, the model presented here simplifies the needle as a solid cylindrical beam and neglects the change in cross-sectional area at the needle tip. Under these assumptions, the area moment of inertia $I$ of the needle in cross-section is constant along the entire length of the needle, so the area moment of inertial can be calculated using Equation \ref{eq:beam_inertia}. 
 
 \begin{equation}
 \label{eq:beam_inertia}
@@ -72,7 +74,7 @@ U_B = \frac{EI}{2}\int_{0}^{L}\frac{1}{\rho^2}dl
  \frac{1}{\rho} \simeq \frac{d^2v}{dl^2}
 \end{equation}
 
-In a beam subject to zero load its cumulative curvature is zero, so its total bending energy is also zero. Higher curvatures correspond to sharper bends, which means that a beam that is predominately straight with one very sharp bend will have a greater bending energy than a beam of the same length where the bend is gentle and distributed along its entire length. Beams adopt shapes that minimize their cumulative bending energy while meeting constraints imposed by external fixtures.
+In a beam subject to zero load its cumulative curvature is zero, so its total bending energy is also zero. Higher curvatures correspond to sharper bends, meaning that a beam that is predominately straight with one very sharp bend will have a greater bending energy than a beam of the same length where the bend is gentle and distributed along its entire length. Beams adopt shapes that minimize their cumulative bending energy while meeting the constraints imposed by external fixtures.
 
 \section{Parametric Polynomial Space Curves}
 The needle curve is represented using an $n$-degree parametric polynomial function, shown in Equation \ref{eq:curve_vector}. In the context of representing a needle, $n$ represents the maximum number of inflection points in each axis. Under ideal conditions a needle inserted without rotation would deflect in one direction with constant curvature, and its shape could be represented using at minimum a 3rd-degree polynomial ($n=3$).
@@ -91,14 +93,14 @@ The needle curve is represented using an $n$-degree parametric polynomial functi
 % s\in (0, 1)
  %\end{equation}
 
-The three spatial coordinates $x$, $y$, and $z$ are functions of a unitless parameter $s$, which ranges from 0 at the needle base to 1 at the needle tip. Given sets of needle coordinates $X$, $Y$, and $Z$, the relationship between the values of $s$ and the positions of the needle coordinates is established by the distances between the needle coordinates, calculated in Equation \ref{eq:distance}, and the proportion of each distance to the cumulative distance between all the coordinates, calculate in Equation \ref{eq:parameter}.
+The three spatial coordinates $x$, $y$, and $z$ are functions of a unitless parameter $s$, which ranges from 0 at the needle base to 1 at the needle tip. Given sets of $k$ needle coordinates $\textbf{V}_{obs}$, the relationship between the values of $s$ and the positions of the needle coordinates is established by the distances between the needle coordinates, calculated in Equation \ref{eq:distance}, and the proportion of each distance to the cumulative distance between all the coordinates, calculated in Equation \ref{eq:parameter}.
 
 \begin{equation}
 \label{eq:distance}
 \begin{cases}
 d_k = 0 &\mbox{if } k=0 \\
 %d_k = \sqrt[]{(X_k - X_{k-1})^2 + (Y_k - Y_{k-1})^2 + (Z_k - Z_{k-1})^2} &\mbox{if } k>0
-d_k = \lvert \textbf{V}_k - \textbf{V}_{k-1}\rvert &\mbox{if } k>0
+d_k = \lvert \textbf{V}_{obs,k} - \textbf{V}_{obs,k-1}\rvert &\mbox{if } k>0
 \end{cases}
 \end{equation}
 
@@ -110,14 +112,14 @@ s_k = s_{k-1} + \frac{d_k}{L_needle}&\mbox{if } k>0
 \end{cases}
 \end{equation}
 
-While an alternative implementation could represent the $x$- and $y$-components of the coordinate as a function of the $z$-component, using an independent parameter allows the curve to represent torturous trajectories without placing restrictions on the direction of needle insertion.
+While an alternative implementation could represent the $x$- and $y$-components of the coordinate as a function of its $z$-component, representing all three coordinates as functions of an independent parameter allows the curve to represent torturous trajectories without placing restrictions on the direction of needle insertion.
 
 The maximum number of inflection points in each axis, and consequently the maximum number of changes in needle direction that the curve can represent, is limited by the degree of the polynomial.
 
 \section{Curve Fitting}
-The purpose of curve fitting is to choose coefficients of the parametric function in Equation \ref{eq:parametric_curve} given a number of observed needle cross section coordinates so that the total bending energy in the curve and the error between the curve and the needle coordinates are minimized.
+The purpose of curve fitting is to choose coefficients of the parametric function in Equation \ref{eq:curve_vector} given a number of observed needle cross section coordinates so that the total bending energy in the curve and the error between the curve and the needle coordinates are minimized.
 
-Prior to optimization, initial coefficients for each curve are found by fitting a polynomial of degree $n$ to the needle coordinates using least-squares. While this initial solution is not representative of the actual mechanical factors that determine the shape of the needle, it approximates the minimum bending energy curve and helps prevent the optimization for reaching a local minimum or other failure condition.
+Prior to optimization, initial coefficients for each curve are found by fitting a polynomial of degree $n$ to the needle coordinates using a least-squares fit. While this initial solution is not representative of the actual mechanical factors that determine the shape of the needle, it approximates the minimum bending energy curve and helps prevent the optimization for reaching a local minimum or other failure condition.
 
 The curve is optimized to minimize bending energy using Sequential Least SQuares Programming (SLSQP), which is an iterative constrained Non-Linear Programming (NLP) search algorithm\cite{kraft_software_1988}.
 
@@ -131,7 +133,7 @@ C = \int_{0}^{L} \frac{1}{\rho^2}dl
 \end{equation}
 
 \subsection{Constraints}
-The optimization is constrained by Equation \ref{eq:base_position_constraint} such that the coordinates of the curve at t=0 matches the position of the base of the needle.
+The optimization is constrained by Equation \ref{eq:base_position_constraint} such that the coordinates of the curve at $s=0$ matches the position of the base of the needle.
 % \begin{equation}
 % \label{eq:base_position_constraint}
 % \begin{cases} X_{k=0} = a_0 \\
@@ -144,7 +146,7 @@ The optimization is constrained by Equation \ref{eq:base_position_constraint} su
  \textbf{V}_{k=0}=\begin{bmatrix} a_0 \\ b_0 \\ c_0 \end{bmatrix}
  \end{equation}
 
-The optimization is further constrained by Equation \ref{eq:length_constraint} so that the length of the curve between \textit{t}=0 and \textit{t}=1 is equal to the length of the needle, and by Equation \ref{eq:rsme_constraint} so that the root-mean-square error (RMSE) between the curve and the observed points is below a specified threshold $\epsilon$.
+The optimization is further constrained by Equation \ref{eq:length_constraint} so that the length of the curve between $s=0$ and $s=1$ is equal to the length of the needle, and by Equation \ref{eq:rsme_constraint} so that the root-mean-square error (RMSE) between the curve and the observed points is below a specified threshold $\epsilon$.
 
 \begin{equation}
 \label{eq:length_constraint}
@@ -154,7 +156,7 @@ L = \int_0^1 \lvert\frac{d\textbf{V}}{ds}\rvert ds
 
 \begin{equation}
 \label{eq:rsme_constraint}
-\epsilon \geq \sqrt[]{\frac{\sum_{i=0}^{k}(V_i - V_{i, obs})^2}{k}}
+\epsilon \geq \sqrt[]{\frac{\sum_{i=0}^{k}(V_i - V_{obs,i})^2}{k}}
 \end{equation}
 
 While equality constraints can also be used to guide the optimized curve to intersect all the needle coordinates, this approach risks over-constraining the curve where the degree of the polynomial is close to the number of equality constraints.
@@ -194,7 +196,7 @@ Algorithm \ref{alg:update_curve_fit} shows the process of calculating polynomial
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap3/curvefit_pt1.png}
-\caption{Given a number of samples, the spacing between the samples, an offset distance from the needle tip, and a new needle base pose, the expected coordinate of the needle is calculated at each sample point.}
+\caption{Given a number of samples, the spacing between the samples $d$, the offset distance from the needle tip $\delta$, and a new needle base pose, the expected coordinate of the needle $p_k$ is calculated at each sample point.}
 \label{fig:curve_fit_pt1}
 \end{figure}
 

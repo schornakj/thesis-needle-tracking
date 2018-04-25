@@ -8,83 +8,85 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Zotero_BBT.bib
-Warning--I didn't find a database entry for "menard_mri_nodate"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--empty booktitle in tokuda_-bore_2012
-Warning--empty booktitle in misra_mechanics_2010
-Warning--empty booktitle in webster_nonholonomic_2006
-Warning--empty booktitle in goksel_modeling_2009
-Warning--empty booktitle in rucker_geometrically_2010
-Warning--empty booktitle in vrooijink_needle_2014
-Warning--empty booktitle in pernelle_validation_2013
-Warning--empty booktitle in roesthuis_three-dimensional_2014
 Warning--empty booktitle in bomers_mri-guided_2012
 Warning--empty booktitle in nath_dosimetric_2000
 Warning--empty booktitle in youk_missed_2007
+Warning--empty booktitle in tokuda_-bore_2012
 Warning--empty booktitle in onik_ct-guided_1988
 Warning--empty booktitle in weiss_mr-guided_2008
-Warning--empty booktitle in damico_transperineal_2000
+Warning--empty journal in menard_mri_
+Warning--empty booktitle in menard_mri_
+Warning--empty year in menard_mri_
+Warning--empty booktitle in vrooijink_needle_2014
 Warning--empty booktitle in fedorov_3d_2012
 Warning--empty booktitle in lewin_needle_1996
 Warning--empty booktitle in song_biopsy_2012
+Warning--empty booktitle in misra_mechanics_2010
+Warning--empty booktitle in webster_nonholonomic_2006
 Warning--empty booktitle in reed_modeling_2009
 Warning--empty booktitle in swensen_torsional_2014
+Warning--empty booktitle in goksel_modeling_2009
 Warning--empty journal in chentanez_interactive_2009
 Warning--empty booktitle in chentanez_interactive_2009
 Warning--empty booktitle in barnett_fracture_2015
 Warning--empty booktitle in abayazid_integrating_2013
+Warning--empty booktitle in duindam_three-dimensional_2010
 Warning--empty booktitle in dimaio_needle_2003
 Warning--empty booktitle in glozman_image-guided_2007
 Warning--empty booktitle in swaney_flexure-based_2013
 Warning--empty booktitle in webster_mechanics_2009
+Warning--empty booktitle in rucker_geometrically_2010
 Warning--empty booktitle in dupont_design_2010-1
 Warning--empty booktitle in rossa_adaptive_2016
+Warning--empty booktitle in pernelle_validation_2013
 Warning--empty booktitle in zijlstra_fast_2017
+Warning--empty booktitle in roesthuis_three-dimensional_2014
 Warning--empty booktitle in patil_needle_2014
 Warning--empty booktitle in wang_real-time_2015
 
 Done.
-You've used 40 entries,
+You've used 41 entries,
             4025 wiz_defined-function locations,
-            1046 strings with 17204 characters,
-and the built_in function-call counts, 39847 in all, are:
-= -- 3105
-> -- 1164
-< -- 391
-+ -- 676
-- -- 214
-* -- 2180
-:= -- 5505
-add.period$ -- 82
-call.type$ -- 40
-change.case$ -- 40
+            1046 strings with 17504 characters,
+and the built_in function-call counts, 40615 in all, are:
+= -- 3144
+> -- 1213
+< -- 392
++ -- 700
+- -- 226
+* -- 2236
+:= -- 5602
+add.period$ -- 84
+call.type$ -- 41
+change.case$ -- 41
 chr.to.int$ -- 879
-cite$ -- 72
-duplicate$ -- 2782
-empty$ -- 2886
-format.name$ -- 246
-if$ -- 9239
+cite$ -- 76
+duplicate$ -- 2842
+empty$ -- 2941
+format.name$ -- 259
+if$ -- 9407
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 521
-newline$ -- 143
-num.names$ -- 39
-pop$ -- 1114
+int.to.str$ -- 41
+missing$ -- 539
+newline$ -- 146
+num.names$ -- 40
+pop$ -- 1168
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2985
+skip$ -- 3031
 stack$ -- 0
-substring$ -- 2110
-swap$ -- 2585
-text.length$ -- 98
+substring$ -- 2113
+swap$ -- 2630
+text.length$ -- 99
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 40
-warning$ -- 32
-while$ -- 151
-width$ -- 42
-write$ -- 438
-(There were 33 warnings)
+type$ -- 41
+warning$ -- 35
+while$ -- 153
+width$ -- 43
+write$ -- 445
+(There were 35 warnings)

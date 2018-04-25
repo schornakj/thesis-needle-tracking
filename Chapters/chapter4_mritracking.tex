@@ -3,6 +3,8 @@
 % use \chaptermark{}
 % to alter or adjust the chapter heading in the running head
 
+The purpose of this experiment is to validate the needle model on imagery representative of what would be available from intraoperative imagery during an MRI-guided insertion and to demonstrate a workflow suitable for real-time needle tracking.
+
 \section{Software Architecture}
 \subsection{Simulated MRI Scanner}
 Full 3D MRI volumes take a long time to produce, especially if high resolution is desired: the scan time for each volume used in this thesis was approximately 5 minutes. This is a prohibitively long time in the context of real-time intraoperative imaging, so the MRI would be configured to provide 2D scans in requested planes with limited field of view. To simulate this functionality, a  Slicer module was created to resection 2D slices from each 3D volumes at specified depths.
@@ -24,8 +26,6 @@ A second Slicer module manages the needle tracking process. Figure \ref{fig:MRI_
 
 \section{Experiment}
 
-The purpose of this experiment is to validate the parametric curve fit and needle model on imagery representative of what would be available from intraoperative imagery during an MRI-guided insertion.
-
 Several assumptions made to reduce the complexity of the experiment and facilitate needle tracking are listed below.
 
 \begin{itemize}
@@ -40,7 +40,7 @@ The set of MRI volumes used in this experiment was captured in the 3T scanner at
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/phantom_with_needle_guide_small_2.jpg}
-\caption{Tissue phantom with needle alignment frame and biopsy needle.}
+\caption{Example tissue phantom with the needle alignment frame and biopsy needle.}
 \label{fig:needle_guide}
 \end{figure}
 
@@ -72,11 +72,11 @@ The baseline for the position of the needle shaft in the phantom was established
 
 \subsection{Needle Localization at a Single Timestep}
 \label{sec:mri_single_timestep}
-At the start of curve optimization using data from an individual insertion step the needle is assumed to be a vector with magnitude matching the length of the needle. The sampling locations are offset from the estimated position of the needle tip by a user-configurable distance to avoid sampling points within the tip artifact.
+At the start of curve optimization using data from a single 3D scan in isolation the needle is assumed to be a vector with magnitude matching the length of the needle. The sampling locations are placed along the needle shaft starting from the needle tip and are offset from the estimated position of the tip by a user-configurable distance to avoid sampling points within the tip artifact.
 
-Figure \ref{fig:results_error_comparison} shows the relative error using a 1st-, 3rd-, 5th-, and 7th-degree polynomials. The tip offset $\delta=5.0mm$, the sample spacing $d=26.0mm$, and the number of observed slices $k=3$. 
+Figure \ref{fig:results_error_comparison} shows the relative error using a 1st-, 3rd-, 5th-, and 7th-degree polynomials. In this experiment the tip offset $\delta=5.0mm$, the sample spacing $d=26.0mm$, and the number of observed slices $k=3$. 
 
-Figure \ref{fig:results_sample_comparison} show the effect on error relative to baseline as the number of slices observed over the length of the needle is increased. 
+Figure \ref{fig:results_sample_comparison} shows the effect on error relative to baseline as the number of slices observed over the length of the needle is increased. 
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/errors_polynomials_3_samples.png}
@@ -86,42 +86,42 @@ Figure \ref{fig:results_sample_comparison} show the effect on error relative to 
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/errors_more_samples.png}
-\caption{Magnitude of in-plane error over insertion for a variable number of sample points. $n=5$, $\delta=5.0mm$}
+\caption{Magnitude of in-plane error over insertion for a variable number of sample points. Markers indicate slice positions. $n=5$, $\delta=5.0mm$}
 \label{fig:results_sample_comparison}
 \end{figure}
 
-\begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
-\caption{Example polynomial curve fit plotted against the positions of the artifact centroids in transverse plane.}
-\label{fig:curve_fit_artifact}
-\end{figure}
+%\begin{figure}[h]
+%\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+%\caption{Example polynomial curve fit plotted against the positions of the artifact centroids in transverse plane.}
+%\label{fig:curve_fit_artifact}
+%\end{figure}
 
 \subsection{Needle Localization at Sequential Timesteps}
-Needle tracking in a sequence of images consists of repeated application of the method for an individual timestep described in \ref{sec:mri_single_timestep}. The optimized curve from the previous localization step is used as the initial estimate for the next localization step. The curve was a 5th-degree polynomial. Three slice planes were selected, starting 5mm from the tip and spaced 10mm apart.
+Needle tracking in a sequence of images consists of repeated application of the method for an individual timestep described in \ref{sec:mri_single_timestep}. The optimized curve from the previous localization step is used as the initial estimate for the next localization step.
 
 Figure \ref{fig:scan_slices} shows the positions of the scan planes and Figure \ref{fig:curve_points} shows points along the optimized curve for each insertion interval. Figure \ref{fig:curve_errors_fixed_spacing} shows the magnitude of error relative to the baseline for the optimized curve at each interval. Figure \ref{fig:curve_errors_variable_spacing} shows the magnitude of error when the spacing between the slices is increased as the needle is inserted.
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/chap5/scan_slices.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap5/scan_slices_labels.png}
 \caption{Positions of 2D scan planes at each insertion step, with segmented artifact.}
 \label{fig:scan_slices}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/chap5/insertions.png}
+\includegraphics[width=1.0\textwidth]{Fig/chap5/insertions_labels.png}
 \caption{Modeled curve points at each insertion step, with segmented artifact.}
 \label{fig:curve_points}
 \end{figure}
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curve_3_10.png}
-\caption{Magnitude of error between the needle model and the artifact centroid.  $d=10mm$, $k=3$, $\delta=5mm$}
+\caption{Magnitude of error between the needle model and the artifact centroid with fixed spacing between slices. Markers indicate slice positions. $d=10mm$, $k=3$, $\delta=5mm$}
 \label{fig:curve_errors_fixed_spacing}
 \end{figure}
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap5/error_curve_3_var.png}
-\caption{Magnitude of error between the needle model and the artifact centroid, where the spacing between each slice increases with insertion depth.  $d=10mm + index_{step}*4mm$, $k=3$, $\delta=5mm$ }
+\caption{Magnitude of error between the needle model and the artifact centroid, where the spacing between each slice increases with insertion depth. Markers indicate slice positions. $d=10mm + index_{step}*4mm$, $k=3$, $\delta=5mm$ }
 \label{fig:curve_errors_variable_spacing}
 \end{figure}
 

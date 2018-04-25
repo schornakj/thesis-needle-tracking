@@ -21,84 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{tokuda_-bore_2012}
-J.~Tokuda, K.~Tuncali, I.~Iordachita, S.-E. Song, A.~Fedorov, S.~Oguro,
-  A.~Lasso, F.~M. Fennessy, C.~M. Tempany, and N.~Hata, ``In-bore setup and
-  {{Software}} for {{3T MRI}}-guided {{Transperineal Prostate Biopsy}},''
-  \emph{Physics in medicine and biology}, vol.~57, no.~18, pp. 5823--5840, Sep.
-  2012.
-
-\bibitem{misra_mechanics_2010}
-S.~Misra, K.~Reed, B.~Schafer, K.~Ramesh, and A.~Okamura,
-  ``\BIBforeignlanguage{en}{Mechanics of {{Flexible Needles Robotically
-  Steered}} through {{Soft Tissue}}},'' \emph{\BIBforeignlanguage{en}{The
-  International Journal of Robotics Research}}, vol.~29, no.~13, pp.
-  1640--1660, Nov. 2010.
-
-\bibitem{roesthuis_mechanics-based_2012}
-R.~J. Roesthuis, M.~Abayazid, and S.~Misra, ``Mechanics-based model for
-  predicting in-plane needle deflection with multiple bends,'' in \emph{2012
-  4th {{IEEE RAS EMBS International Conference}} on {{Biomedical Robotics}} and
-  {{Biomechatronics}} ({{BioRob}})}, Jun. 2012, pp. 69--74.
-
-\bibitem{webster_nonholonomic_2006}
-R.~J. Webster, J.~S. Kim, N.~J. Cowan, G.~S. Chirikjian, and A.~M. Okamura,
-  ``\BIBforeignlanguage{en}{Nonholonomic {{Modeling}} of {{Needle
-  Steering}}},'' \emph{\BIBforeignlanguage{en}{The International Journal of
-  Robotics Research}}, vol.~25, no. 5-6, pp. 509--525, May 2006.
-
-\bibitem{goksel_modeling_2009}
-O.~Goksel, E.~Dehghan, and S.~E. Salcudean,
-  ``\BIBforeignlanguage{English}{Modeling and simulation of flexible
-  needles},'' \emph{\BIBforeignlanguage{English}{Medical Engineering and
-  Physics}}, vol.~31, no.~9, pp. 1069--1078, Nov. 2009.
-
-\bibitem{reed_integrated_2008}
-K.~B. Reed, V.~Kallem, R.~Alterovitz, K.~Goldbergxz, A.~M. Okamura, and N.~J.
-  Cowan, ``Integrated planning and image-guided control for planar needle
-  steering,'' in \emph{2008 2nd {{IEEE RAS EMBS International Conference}} on
-  {{Biomedical Robotics}} and {{Biomechatronics}}}, Oct. 2008, pp. 819--824.
-
-\bibitem{roesthuis_modeling_2015}
-R.~J. Roesthuis, N.~J. van~de Berg, J.~J. van~den Dobbelsteen, and S.~Misra,
-  ``Modeling and steering of a novel actuated-tip needle through a soft-tissue
-  simulant using {{Fiber Bragg Grating}} sensors,'' in \emph{2015 {{IEEE
-  International Conference}} on {{Robotics}} and {{Automation}} ({{ICRA}})},
-  May 2015, pp. 2283--2289.
-
-\bibitem{rucker_geometrically_2010}
-D.~C. Rucker, B.~A. Jones, and R.~J.~W. III, ``A {{Geometrically Exact Model}}
-  for {{Externally Loaded Concentric}}-{{Tube Continuum Robots}},'' \emph{IEEE
-  Transactions on Robotics}, vol.~26, no.~5, pp. 769--780, Oct. 2010.
-
-\bibitem{patel_closed-loop_2015}
-N.~A. Patel, T.~van Katwijk, G.~Li, P.~Moreira, W.~Shang, S.~Misra, and G.~S.
-  Fischer, ``Closed-loop asymmetric-tip needle steering under continuous
-  intraoperative {{MRI}} guidance,'' in \emph{2015 37th {{Annual International
-  Conference}} of the {{IEEE Engineering}} in {{Medicine}} and {{Biology
-  Society}} ({{EMBC}})}, Aug. 2015, pp. 4869--4874.
-
-\bibitem{vrooijink_needle_2014}
-G.~J. Vrooijink, M.~Abayazid, S.~Patil, R.~Alterovitz, and S.~Misra,
-  ``\BIBforeignlanguage{en}{Needle path planning and steering in a
-  three-dimensional non-static environment using two-dimensional ultrasound
-  images},'' \emph{\BIBforeignlanguage{en}{The International Journal of
-  Robotics Research}}, vol.~33, no.~10, pp. 1361--1374, Sep. 2014.
-
-\bibitem{pernelle_validation_2013}
-G.~Pernelle, A.~Mehrtash, L.~Barber, A.~Damato, W.~Wang, R.~T. Seethamraju,
-  E.~Schmidt, R.~Cormack, W.~Wells, A.~Viswanathan, and T.~Kapur, ``Validation
-  of {{Catheter Segmentation}} for {{MR}}-guided {{Gynecologic Cancer
-  Brachytherapy}},'' \emph{Medical image computing and computer-assisted
-  intervention : MICCAI ... International Conference on Medical Image Computing
-  and Computer-Assisted Intervention}, vol.~16, no. 0 3, pp. 380--387, 2013.
-
-\bibitem{roesthuis_three-dimensional_2014}
-R.~J. Roesthuis, M.~Kemp, J.~J. van~den Dobbelsteen, and S.~Misra,
-  ``Three-{{Dimensional Needle Shape Reconstruction Using}} an {{Array}} of
-  {{Fiber Bragg Grating Sensors}},'' \emph{IEEE/ASME Transactions on
-  Mechatronics}, vol.~19, no.~4, pp. 1115--1126, Aug. 2014.
-
 \bibitem{bomers_mri-guided_2012}
 J.~G.~R. Bomers, J.~P.~M. Sedelaar, J.~O. Barentsz, and J.~J. F{\"u}tterer,
   ``{{MRI}}-{{Guided Interventions}} for the {{Treatment}} of {{Prostate
@@ -119,6 +41,13 @@ J.~H. Youk, E.-K. Kim, M.~J. Kim, J.~Y. Lee, and K.~K. Oh,
   A Review Publication of the Radiological Society of North America, Inc}},
   vol.~27, no.~1, pp. 79--94, 2007 Jan-Feb.
 
+\bibitem{tokuda_-bore_2012}
+J.~Tokuda, K.~Tuncali, I.~Iordachita, S.-E. Song, A.~Fedorov, S.~Oguro,
+  A.~Lasso, F.~M. Fennessy, C.~M. Tempany, and N.~Hata, ``In-bore setup and
+  {{Software}} for {{3T MRI}}-guided {{Transperineal Prostate Biopsy}},''
+  \emph{Physics in medicine and biology}, vol.~57, no.~18, pp. 5823--5840, Sep.
+  2012.
+
 \bibitem{onik_ct-guided_1988}
 G.~Onik, E.~R. Cosman, T.~H. Wells, H.~I. Goldberg, A.~A. Moss, P.~Costello,
   R.~A. Kane, W.~I. Hoddick, and B.~Demas,
@@ -133,11 +62,26 @@ C.~R. Weiss, S.~G. Nour, and J.~S. Lewin,
   techniques and applications},'' \emph{\BIBforeignlanguage{en}{Journal of
   Magnetic Resonance Imaging}}, vol.~27, no.~2, pp. 311--325, Feb. 2008.
 
-\bibitem{damico_transperineal_2000}
-A.~V. D'amico, C.~M. Tempany, R.~Cormack, N.~Hata, M.~Jinzaki, K.~Tuncali,
-  M.~Weinstein, and J.~P. Richie, ``{{TRANSPERINEAL MAGNETIC RESONANCE IMAGE
-  GUIDED PROSTATE BIOPSY}},'' \emph{The Journal of Urology}, vol. 164, no.~2,
-  pp. 385--387, Aug. 2000.
+\bibitem{menard_mri_}
+C.~Menard, D.~Iupati, J.~Lee, A.~Simeonov, J.~Abed, J.~Publicover, P.~Chung,
+  A.~Bayley, C.~Catton, M.~Milosevic, R.~Bristow, G.~Morton, P.~Warde,
+  K.~Brock, and M.~Haider, ``\BIBforeignlanguage{en}{{{MRI}} and {{Biopsy
+  Performance}} in {{Delineating Recurrent Tumor Boundaries}} after
+  {{Radiotherapy}} for {{Prostate Cancer}}},'' p.~1.
+
+\bibitem{patel_closed-loop_2015}
+N.~A. Patel, T.~van Katwijk, G.~Li, P.~Moreira, W.~Shang, S.~Misra, and G.~S.
+  Fischer, ``Closed-loop asymmetric-tip needle steering under continuous
+  intraoperative {{MRI}} guidance,'' in \emph{2015 37th {{Annual International
+  Conference}} of the {{IEEE Engineering}} in {{Medicine}} and {{Biology
+  Society}} ({{EMBC}})}, Aug. 2015, pp. 4869--4874.
+
+\bibitem{vrooijink_needle_2014}
+G.~J. Vrooijink, M.~Abayazid, S.~Patil, R.~Alterovitz, and S.~Misra,
+  ``\BIBforeignlanguage{en}{Needle path planning and steering in a
+  three-dimensional non-static environment using two-dimensional ultrasound
+  images},'' \emph{\BIBforeignlanguage{en}{The International Journal of
+  Robotics Research}}, vol.~33, no.~10, pp. 1361--1374, Sep. 2014.
 
 \bibitem{_3d_}
 ``{{3D Slicer}},'' https://www.slicer.org/.
@@ -163,6 +107,19 @@ S.-E. Song, N.~B. Cho, I.~Iordachita, P.~Guion, G.~Fichtinger, A.~Kaushal,
   transactions on bio-medical engineering}, vol.~59, no.~7, pp. 1902--1911,
   Jul. 2012.
 
+\bibitem{misra_mechanics_2010}
+S.~Misra, K.~Reed, B.~Schafer, K.~Ramesh, and A.~Okamura,
+  ``\BIBforeignlanguage{en}{Mechanics of {{Flexible Needles Robotically
+  Steered}} through {{Soft Tissue}}},'' \emph{\BIBforeignlanguage{en}{The
+  International Journal of Robotics Research}}, vol.~29, no.~13, pp.
+  1640--1660, Nov. 2010.
+
+\bibitem{webster_nonholonomic_2006}
+R.~J. Webster, J.~S. Kim, N.~J. Cowan, G.~S. Chirikjian, and A.~M. Okamura,
+  ``\BIBforeignlanguage{en}{Nonholonomic {{Modeling}} of {{Needle
+  Steering}}},'' \emph{\BIBforeignlanguage{en}{The International Journal of
+  Robotics Research}}, vol.~25, no. 5-6, pp. 509--525, May 2006.
+
 \bibitem{cowan_robotic_2011}
 N.~J. Cowan, K.~Goldberg, G.~S. Chirikjian, G.~Fichtinger, R.~Alterovitz, K.~B.
   Reed, V.~Kallem, W.~Park, S.~Misra, and A.~M. Okamura,
@@ -181,6 +138,12 @@ J.~P. Swensen, M.~Lin, A.~M. Okamura, and N.~J. Cowan, ``Torsional {{Dynamics}}
   of {{Steerable Needles}}: {{Modeling}} and {{Fluoroscopic Guidance}},''
   \emph{IEEE Transactions on Biomedical Engineering}, vol.~61, no.~11, pp.
   2707--2717, Nov. 2014.
+
+\bibitem{goksel_modeling_2009}
+O.~Goksel, E.~Dehghan, and S.~E. Salcudean,
+  ``\BIBforeignlanguage{English}{Modeling and simulation of flexible
+  needles},'' \emph{\BIBforeignlanguage{English}{Medical Engineering and
+  Physics}}, vol.~31, no.~9, pp. 1069--1078, Nov. 2009.
 
 \bibitem{chentanez_interactive_2009}
 A.~Chentanez, C.~Ritchie, G.~Hauser, and O.~Shewchuk,
@@ -206,6 +169,20 @@ M.~Abayazid, R.~J. Roesthuis, R.~Reilink, and S.~Misra, ``Integrating
   Needle Steering}},'' \emph{IEEE Transactions on Robotics}, vol.~29, no.~2,
   pp. 542--553, Apr. 2013.
 
+\bibitem{roesthuis_modeling_2015}
+R.~J. Roesthuis, N.~J. van~de Berg, J.~J. van~den Dobbelsteen, and S.~Misra,
+  ``Modeling and steering of a novel actuated-tip needle through a soft-tissue
+  simulant using {{Fiber Bragg Grating}} sensors,'' in \emph{2015 {{IEEE
+  International Conference}} on {{Robotics}} and {{Automation}} ({{ICRA}})},
+  May 2015, pp. 2283--2289.
+
+\bibitem{duindam_three-dimensional_2010}
+V.~Duindam, J.~Xu, R.~Alterovitz, S.~Sastry, and K.~Goldberg,
+  ``\BIBforeignlanguage{en}{Three-dimensional {{Motion Planning Algorithms}}
+  for {{Steerable Needles Using Inverse Kinematics}}},''
+  \emph{\BIBforeignlanguage{en}{The International Journal of Robotics
+  Research}}, vol.~29, no.~7, pp. 789--800, Jun. 2010.
+
 \bibitem{dimaio_needle_2003}
 S.~P. DiMaio and S.~E. Salcudean, ``Needle insertion modeling and simulation,''
   \emph{IEEE Transactions on Robotics and Automation}, vol.~19, no.~5, pp.
@@ -215,6 +192,12 @@ S.~P. DiMaio and S.~E. Salcudean, ``Needle insertion modeling and simulation,''
 D.~Glozman and M.~Shoham, ``Image-{{Guided Robotic Flexible Needle
   Steering}},'' \emph{IEEE Transactions on Robotics}, vol.~23, no.~3, pp.
   459--467, Jun. 2007.
+
+\bibitem{reed_integrated_2008}
+K.~B. Reed, V.~Kallem, R.~Alterovitz, K.~Goldbergxz, A.~M. Okamura, and N.~J.
+  Cowan, ``Integrated planning and image-guided control for planar needle
+  steering,'' in \emph{2008 2nd {{IEEE RAS EMBS International Conference}} on
+  {{Biomedical Robotics}} and {{Biomechatronics}}}, Oct. 2008, pp. 819--824.
 
 \bibitem{swaney_flexure-based_2013}
 P.~J. Swaney, J.~Burgner, H.~B. Gilbert, and R.~J. Webster, ``A
@@ -226,6 +209,11 @@ P.~J. Swaney, J.~Burgner, H.~B. Gilbert, and R.~J. Webster, ``A
 R.~J. Webster, J.~M. Romano, and N.~J. Cowan, ``Mechanics of
   {{Precurved}}-{{Tube Continuum Robots}},'' \emph{IEEE Transactions on
   Robotics}, vol.~25, no.~1, pp. 67--78, Feb. 2009.
+
+\bibitem{rucker_geometrically_2010}
+D.~C. Rucker, B.~A. Jones, and R.~J.~W. III, ``A {{Geometrically Exact Model}}
+  for {{Externally Loaded Concentric}}-{{Tube Continuum Robots}},'' \emph{IEEE
+  Transactions on Robotics}, vol.~26, no.~5, pp. 769--780, Oct. 2010.
 
 \bibitem{dupont_design_2010-1}
 P.~E. Dupont, J.~Lock, B.~Itkowitz, and E.~Butler, ``Design and {{Control}} of
@@ -245,12 +233,26 @@ C.~Rossa, M.~Khadem, R.~Sloboda, N.~Usmani, and M.~Tavakoli, ``Adaptive
   {{Soft Tissue}},'' \emph{IEEE Robotics and Automation Letters}, vol.~1,
   no.~2, pp. 916--923, Jul. 2016.
 
+\bibitem{pernelle_validation_2013}
+G.~Pernelle, A.~Mehrtash, L.~Barber, A.~Damato, W.~Wang, R.~T. Seethamraju,
+  E.~Schmidt, R.~Cormack, W.~Wells, A.~Viswanathan, and T.~Kapur, ``Validation
+  of {{Catheter Segmentation}} for {{MR}}-guided {{Gynecologic Cancer
+  Brachytherapy}},'' \emph{Medical image computing and computer-assisted
+  intervention : MICCAI ... International Conference on Medical Image Computing
+  and Computer-Assisted Intervention}, vol.~16, no. 0 3, pp. 380--387, 2013.
+
 \bibitem{zijlstra_fast_2017}
 F.~Zijlstra, J.~G. Bouwman, I.~Bra{\v s}kut{\.e}, M.~A. Viergever, and P.~R.
   Seevinck, ``\BIBforeignlanguage{en}{Fast {{Fourier}}-based simulation of
   off-resonance artifacts in steady-state gradient echo {{MRI}} applied to
   metal object localization},'' \emph{\BIBforeignlanguage{en}{Magnetic
   Resonance in Medicine}}, vol.~78, no.~5, pp. 2035--2041, Nov. 2017.
+
+\bibitem{roesthuis_three-dimensional_2014}
+R.~J. Roesthuis, M.~Kemp, J.~J. van~den Dobbelsteen, and S.~Misra,
+  ``Three-{{Dimensional Needle Shape Reconstruction Using}} an {{Array}} of
+  {{Fiber Bragg Grating Sensors}},'' \emph{IEEE/ASME Transactions on
+  Mechatronics}, vol.~19, no.~4, pp. 1115--1126, Aug. 2014.
 
 \bibitem{patil_needle_2014}
 S.~Patil, J.~Burgner, R.~J. Webster, and R.~Alterovitz, ``Needle {{Steering}}
@@ -266,6 +268,12 @@ W.~Wang, C.~L. Dumoulin, A.~N. Viswanathan, Z.~T.~H. Tse, A.~Mehrtash, W.~Loew,
   medicine : official journal of the Society of Magnetic Resonance in Medicine
   / Society of Magnetic Resonance in Medicine}, vol.~73, no.~5, pp. 1803--1811,
   May 2015.
+
+\bibitem{roesthuis_mechanics-based_2012}
+R.~J. Roesthuis, M.~Abayazid, and S.~Misra, ``Mechanics-based model for
+  predicting in-plane needle deflection with multiple bends,'' in \emph{2012
+  4th {{IEEE RAS EMBS International Conference}} on {{Biomedical Robotics}} and
+  {{Biomechatronics}} ({{BioRob}})}, Jun. 2012, pp. 69--74.
 
 \bibitem{kraft_software_1988}
 D.~Kraft, \emph{A Software Package for Sequential Quadratic Programming}.\hskip

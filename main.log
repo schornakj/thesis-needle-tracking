@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.4.23)  24 APR 2018 12:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.4.23)  24 APR 2018 22:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -619,7 +619,7 @@ Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 \openout5 = `main.toc'.
 
  [6] (./main.lof
-Overfull \hbox (14.6643pt too wide) in paragraph at lines 11--11
+Overfull \hbox (14.6643pt too wide) in paragraph at lines 8--8
  [][] [][]\OT1/cmr/m/n/12 Mechanical model of a nee-dle in a two-bend con-fig-u
 -ra-tion (from Roesthuis, 
  []
@@ -632,56 +632,26 @@ Overfull \hbox (14.6643pt too wide) in paragraph at lines 11--11
 
  [8]) (./Chapters/chapter1_intro.tex
 Chapter 1.
-
-LaTeX Warning: Citation `menard_mri_nodate' on page 1 undefined on input line 6
-.
-
 [1
 
-] <Fig/chap1/tokuda_action_shot.png, id=425, 841.1425pt x 625.33624pt>
+] <Fig/chap1/tokuda_action_shot.png, id=388, 841.1425pt x 625.33624pt>
 File: Fig/chap1/tokuda_action_shot.png Graphic file (type png)
 
 <use Fig/chap1/tokuda_action_shot.png>
 Package pdftex.def Info: Fig/chap1/tokuda_action_shot.png used on input line 9.
 
 (pdftex.def)             Requested size: 433.62pt x 322.37141pt.
- [2 <./Fig/chap1/tokuda_action_shot.png>] [3]
-Overfull \hbox (8.94774pt too wide) in paragraph at lines 33--33
-[]\OT1/cmr/bx/n/17.28 Imaging-Agnostic Nee-dle Tip Lo-cal-iza-tion Al-
- []
-
-[4] [5] <Fig/placeholder.png, id=455, 628.3475pt x 480.79625pt>
-File: Fig/placeholder.png Graphic file (type png)
-
-<use Fig/placeholder.png>
-Package pdftex.def Info: Fig/placeholder.png used on input line 53.
-(pdftex.def)             Requested size: 433.62pt x 331.79378pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Fig/chap1/mri_phantom.png, id=456, 640.3925pt x 325.215pt>
+ [2 <./Fig/chap1/tokuda_action_shot.png>] [3] [4] [5] <Fig/chap1/mri_phantom.pn
+g, id=418, 640.3925pt x 325.215pt>
 File: Fig/chap1/mri_phantom.png Graphic file (type png)
 
 <use Fig/chap1/mri_phantom.png>
-Package pdftex.def Info: Fig/chap1/mri_phantom.png used on input line 59.
+Package pdftex.def Info: Fig/chap1/mri_phantom.png used on input line 55.
 (pdftex.def)             Requested size: 433.62pt x 220.21034pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6] [7 <./Fig/placeholder.png>]
-File: Fig/placeholder.png Graphic file (type png)
- <use Fig/placeholder.png>
-Package pdftex.def Info: Fig/placeholder.png used on input line 79.
-(pdftex.def)             Requested size: 433.62pt x 331.79378pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./Chapters/chapter2_priorart.tex [8 <./Fig/chap1/mri_phantom.png>] [9]
+ [6 <./Fig/chap1/mri_phantom.png>])
+(./Chapters/chapter2_priorart.tex [7]
 Chapter 2.
-<Fig/chap2/misra_tip_forces.png, id=483, 621.32124pt x 443.6575pt>
+<Fig/chap2/misra_tip_forces.png, id=436, 621.32124pt x 443.6575pt>
 File: Fig/chap2/misra_tip_forces.png Graphic file (type png)
 
 <use Fig/chap2/misra_tip_forces.png>
@@ -691,7 +661,7 @@ Package pdftex.def Info: Fig/chap2/misra_tip_forces.png used on input line 13.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap2/roesthius_needle_forces.png, id=486, 1285.80376pt x 393.47pt>
+<Fig/chap2/roesthius_needle_forces.png, id=437, 1285.80376pt x 393.47pt>
 File: Fig/chap2/roesthius_needle_forces.png Graphic file (type png)
 
 <use Fig/chap2/roesthius_needle_forces.png>
@@ -702,10 +672,10 @@ ne 19.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10
+[8
 
-] [11 <./Fig/chap2/misra_tip_forces.png>]
-<Fig/chap2/webster_nonholonomic_model.png, id=501, 1299.85625pt x 658.46pt>
+] [9 <./Fig/chap2/misra_tip_forces.png>]
+<Fig/chap2/webster_nonholonomic_model.png, id=450, 1299.85625pt x 658.46pt>
 File: Fig/chap2/webster_nonholonomic_model.png Graphic file (type png)
 
 <use Fig/chap2/webster_nonholonomic_model.png>
@@ -716,171 +686,146 @@ Package pdftex.def Info: Fig/chap2/webster_nonholonomic_model.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./Fig/chap2/roesthius_needle_forces.png>] [13 <./Fig/chap2/webster_nonholo
+[10 <./Fig/chap2/roesthius_needle_forces.png>] [11 <./Fig/chap2/webster_nonholo
 nomic_model.png>]
-File: Fig/placeholder.png Graphic file (type png)
- <use Fig/placeholder.png>
-Package pdftex.def Info: Fig/placeholder.png used on input line 46.
-(pdftex.def)             Requested size: 433.62pt x 331.79378pt.
- [14]
-<Fig/chap2/roesthuis_two_bend_beam.png, id=533, 663.47874pt x 485.815pt>
+<Fig/chap2/roesthuis_two_bend_beam.png, id=478, 663.47874pt x 485.815pt>
 File: Fig/chap2/roesthuis_two_bend_beam.png Graphic file (type png)
 
 <use Fig/chap2/roesthuis_two_bend_beam.png>
 Package pdftex.def Info: Fig/chap2/roesthuis_two_bend_beam.png used on input li
-ne 59.
+ne 57.
 (pdftex.def)             Requested size: 433.62pt x 317.51064pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[15] [16 <./Fig/chap2/roesthuis_two_bend_beam.png>]
-File: Fig/placeholder.png Graphic file (type png)
- <use Fig/placeholder.png>
-Package pdftex.def Info: Fig/placeholder.png used on input line 75.
-(pdftex.def)             Requested size: 433.62pt x 331.79378pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Fig/chap2/actuated_tip_needle.png, id=556, 1307.88625pt x 998.73125pt>
+[12] [13 <./Fig/chap2/roesthuis_two_bend_beam.png>]
+<Fig/chap2/actuated_tip_needle.png, id=497, 1307.88625pt x 998.73125pt>
 File: Fig/chap2/actuated_tip_needle.png Graphic file (type png)
 
 <use Fig/chap2/actuated_tip_needle.png>
-Package pdftex.def Info: Fig/chap2/actuated_tip_needle.png used on input line 8
-1.
+Package pdftex.def Info: Fig/chap2/actuated_tip_needle.png used on input line 7
+9.
 (pdftex.def)             Requested size: 433.62pt x 331.1215pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap2/concentric_needle.png, id=563, 823.075pt x 384.43625pt>
+[14] <Fig/chap2/concentric_needle.png, id=510, 823.075pt x 384.43625pt>
 File: Fig/chap2/concentric_needle.png Graphic file (type png)
 
 <use Fig/chap2/concentric_needle.png>
-Package pdftex.def Info: Fig/chap2/concentric_needle.png used on input line 93.
+Package pdftex.def Info: Fig/chap2/concentric_needle.png used on input line 89.
 
 (pdftex.def)             Requested size: 433.62pt x 202.5301pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[17] [18] <Fig/chap2/patel_mri_tracking.png, id=580, 907.39pt x 705.63625pt>
+ [15 <./Fig/chap2/actuated_tip_needle.png>] [16 <./Fig/chap2/concentric_needle.
+png>]
+<Fig/chap2/patel_mri_tracking.png, id=524, 907.39pt x 705.63625pt>
 File: Fig/chap2/patel_mri_tracking.png Graphic file (type png)
 
 <use Fig/chap2/patel_mri_tracking.png>
 Package pdftex.def Info: Fig/chap2/patel_mri_tracking.png used on input line 10
-5.
+1.
 (pdftex.def)             Requested size: 433.62pt x 337.20491pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[19 <./Fig/chap2/actuated_tip_needle.png>] [20 <./Fig/chap2/concentric_needle.p
-ng>] <Fig/chap2/vrooijink_US_tracking.png, id=596, 896.34875pt x 482.80376pt>
+ [17 <./Fig/chap2/patel_mri_tracking.png>] <Fig/chap2/vrooijink_US_tracking.png
+, id=534, 896.34875pt x 482.80376pt>
 File: Fig/chap2/vrooijink_US_tracking.png Graphic file (type png)
 
 <use Fig/chap2/vrooijink_US_tracking.png>
 Package pdftex.def Info: Fig/chap2/vrooijink_US_tracking.png used on input line
- 117.
+ 113.
 (pdftex.def)             Requested size: 433.62pt x 233.56282pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[21 <./Fig/chap2/patel_mri_tracking.png>]
-<Fig/chap2/needlefinder.png, id=608, 1675.25874pt x 694.595pt>
+[18] <Fig/chap2/needlefinder.png, id=543, 1675.25874pt x 694.595pt>
 File: Fig/chap2/needlefinder.png Graphic file (type png)
 
 <use Fig/chap2/needlefinder.png>
-Package pdftex.def Info: Fig/chap2/needlefinder.png used on input line 126.
+Package pdftex.def Info: Fig/chap2/needlefinder.png used on input line 122.
 (pdftex.def)             Requested size: 433.62pt x 179.78494pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22 <./Fig/chap2/vrooijink_US_tracking.png>] [23 <./Fig/chap2/needlefinder.png>
-] <Fig/chap2/fbg_needle.png, id=624, 925.4575pt x 587.19376pt>
+[19 <./Fig/chap2/vrooijink_US_tracking.png>] [20 <./Fig/chap2/needlefinder.png>
+] <Fig/chap2/fbg_needle.png, id=557, 925.4575pt x 587.19376pt>
 File: Fig/chap2/fbg_needle.png Graphic file (type png)
 
 <use Fig/chap2/fbg_needle.png>
-Package pdftex.def Info: Fig/chap2/fbg_needle.png used on input line 139.
+Package pdftex.def Info: Fig/chap2/fbg_needle.png used on input line 135.
 (pdftex.def)             Requested size: 433.62pt x 275.12991pt.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
 ) (./Chapters/chapter3_needlemodeling.tex
-[24 <./Fig/chap2/fbg_needle.png>]
+[21 <./Fig/chap2/fbg_needle.png>]
 Chapter 3.
-[25
+[22
 
-] [26] [27] [28] [29] [30]
-
-LaTeX Warning: Reference `eq:parametric_curve' on page 31 undefined on input li
-ne 118.
-
-[31] [32] [33]
+] [23] [24] [25] [26] [27] [28] [29] [30]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 178.
+put line 180.
 
-<Fig/chap3/curvefit_pt1.png, id=710, 1147.28625pt x 763.85374pt>
+<Fig/chap3/curvefit_pt1.png, id=652, 846.16125pt x 554.07pt>
 File: Fig/chap3/curvefit_pt1.png Graphic file (type png)
 
 <use Fig/chap3/curvefit_pt1.png>
-Package pdftex.def Info: Fig/chap3/curvefit_pt1.png used on input line 196.
-(pdftex.def)             Requested size: 433.62pt x 288.69394pt.
+Package pdftex.def Info: Fig/chap3/curvefit_pt1.png used on input line 198.
+(pdftex.def)             Requested size: 433.62pt x 283.93312pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap3/curvefit_pt2.png, id=711, 1152.305pt x 744.7825pt>
+<Fig/chap3/curvefit_pt2.png, id=653, 1152.305pt x 744.7825pt>
 File: Fig/chap3/curvefit_pt2.png Graphic file (type png)
 
 <use Fig/chap3/curvefit_pt2.png>
-Package pdftex.def Info: Fig/chap3/curvefit_pt2.png used on input line 202.
+Package pdftex.def Info: Fig/chap3/curvefit_pt2.png used on input line 204.
 (pdftex.def)             Requested size: 433.62pt x 280.2701pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap3/curvefit_pt3.png, id=712, 1154.3125pt x 748.7975pt>
+<Fig/chap3/curvefit_pt3.png, id=654, 1154.3125pt x 748.7975pt>
 File: Fig/chap3/curvefit_pt3.png Graphic file (type png)
 
 <use Fig/chap3/curvefit_pt3.png>
-Package pdftex.def Info: Fig/chap3/curvefit_pt3.png used on input line 208.
+Package pdftex.def Info: Fig/chap3/curvefit_pt3.png used on input line 210.
 (pdftex.def)             Requested size: 433.62pt x 281.28967pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./Chapters/chapter4_mritracking.tex [34] [35 <./Fig/chap3/curvefit_pt1.png>]
-[36 <./Fig/chap3/curvefit_pt2.png>] [37 <./Fig/chap3/curvefit_pt3.png>]
+) (./Chapters/chapter4_mritracking.tex [31] [32 <./Fig/chap3/curvefit_pt1.png>]
+[33 <./Fig/chap3/curvefit_pt2.png>] [34 <./Fig/chap3/curvefit_pt3.png>]
 Chapter 4.
-[38
+[35
 
 ]
-<Fig/chap5/MRI_software_architecture.png, id=739, 1092.08pt x 408.52625pt>
+<Fig/chap5/MRI_software_architecture.png, id=680, 1092.08pt x 408.52625pt>
 File: Fig/chap5/MRI_software_architecture.png Graphic file (type png)
 
 <use Fig/chap5/MRI_software_architecture.png>
 Package pdftex.def Info: Fig/chap5/MRI_software_architecture.png used on input 
-line 14.
+line 16.
 (pdftex.def)             Requested size: 433.62pt x 162.21075pt.
 
-<Fig/chap5/MRINeedleTipTracker_module.png, id=740, 1860.9525pt x 696.6025pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Fig/chap5/MRINeedleTipTracker_module.png, id=681, 1860.9525pt x 696.6025pt>
 File: Fig/chap5/MRINeedleTipTracker_module.png Graphic file (type png)
 
 <use Fig/chap5/MRINeedleTipTracker_module.png>
 Package pdftex.def Info: Fig/chap5/MRINeedleTipTracker_module.png used on input
- line 20.
+ line 22.
 (pdftex.def)             Requested size: 433.62pt x 162.30917pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39 <./Fig/chap5/MRI_software_architecture.png>] [40 <./Fig/chap5/MRINeedleTipT
+[36] [37 <./Fig/chap5/MRI_software_architecture.png> <./Fig/chap5/MRINeedleTipT
 racker_module.png>]
-<Fig/chap5/phantom_with_needle_guide_small_2.jpg, id=750, 2168.1pt x 1220.56pt>
+<Fig/chap5/phantom_with_needle_guide_small_2.jpg, id=691, 2168.1pt x 1220.56pt>
 File: Fig/chap5/phantom_with_needle_guide_small_2.jpg Graphic file (type jpg)
 <use Fig/chap5/phantom_with_needle_guide_small_2.jpg>
 Package pdftex.def Info: Fig/chap5/phantom_with_needle_guide_small_2.jpg used o
@@ -890,7 +835,7 @@ n input line 42.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41] <Fig/chap5/segmented_artifact_2001.png, id=758, 1174.3875pt x 660.4675pt>
+[38] <Fig/chap5/segmented_artifact_2001.png, id=698, 1174.3875pt x 660.4675pt>
 File: Fig/chap5/segmented_artifact_2001.png Graphic file (type png)
 
 <use Fig/chap5/segmented_artifact_2001.png>
@@ -901,7 +846,7 @@ ne 62.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap5/neutral_axis_2001_b.png, id=759, 709.65125pt x 626.34pt>
+<Fig/chap5/neutral_axis_2001_b.png, id=699, 709.65125pt x 626.34pt>
 File: Fig/chap5/neutral_axis_2001_b.png Graphic file (type png)
 
 <use Fig/chap5/neutral_axis_2001_b.png>
@@ -912,8 +857,8 @@ Package pdftex.def Info: Fig/chap5/neutral_axis_2001_b.png used on input line 6
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42 <./Fig/chap5/phantom_with_needle_guide_small_2.jpg>]
-<Fig/chap5/errors_polynomials_3_samples.png, id=766, 521.0667pt x 402.5439pt>
+[39 <./Fig/chap5/phantom_with_needle_guide_small_2.jpg>]
+<Fig/chap5/errors_polynomials_3_samples.png, id=707, 521.0667pt x 402.5439pt>
 File: Fig/chap5/errors_polynomials_3_samples.png Graphic file (type png)
 
 <use Fig/chap5/errors_polynomials_3_samples.png>
@@ -924,7 +869,7 @@ ut line 82.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap5/errors_more_samples.png, id=768, 521.0667pt x 402.5439pt>
+<Fig/chap5/errors_more_samples.png, id=709, 521.0667pt x 402.5439pt>
 File: Fig/chap5/errors_more_samples.png Graphic file (type png)
 
 <use Fig/chap5/errors_more_samples.png>
@@ -935,36 +880,31 @@ Package pdftex.def Info: Fig/chap5/errors_more_samples.png used on input line 8
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: Fig/placeholder.png Graphic file (type png)
-<use Fig/placeholder.png>
-Package pdftex.def Info: Fig/placeholder.png used on input line 94.
-(pdftex.def)             Requested size: 433.62pt x 331.79378pt.
+[40 <./Fig/chap5/segmented_artifact_2001.png>] [41 <./Fig/chap5/neutral_axis_20
+01_b.png>]
+<Fig/chap5/scan_slices_labels.png, id=724, 2319.66624pt x 2029.5825pt>
+File: Fig/chap5/scan_slices_labels.png Graphic file (type png)
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[43 <./Fig/chap5/segmented_artifact_2001.png>] [44 <./Fig/chap5/neutral_axis_20
-01_b.png>] <Fig/chap5/scan_slices.png, id=782, 2319.66624pt x 2029.5825pt>
-File: Fig/chap5/scan_slices.png Graphic file (type png)
-
-<use Fig/chap5/scan_slices.png>
-Package pdftex.def Info: Fig/chap5/scan_slices.png used on input line 105.
+<use Fig/chap5/scan_slices_labels.png>
+Package pdftex.def Info: Fig/chap5/scan_slices_labels.png used on input line 10
+5.
 (pdftex.def)             Requested size: 433.62pt x 379.36897pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap5/insertions.png, id=783, 2231.33624pt x 2023.56pt>
-File: Fig/chap5/insertions.png Graphic file (type png)
+<Fig/chap5/insertions_labels.png, id=725, 2231.33624pt x 2023.56pt>
+File: Fig/chap5/insertions_labels.png Graphic file (type png)
 
-<use Fig/chap5/insertions.png>
-Package pdftex.def Info: Fig/chap5/insertions.png used on input line 111.
+<use Fig/chap5/insertions_labels.png>
+Package pdftex.def Info: Fig/chap5/insertions_labels.png used on input line 111
+.
 (pdftex.def)             Requested size: 433.62pt x 393.21858pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap5/error_curve_3_10.png, id=784, 521.0667pt x 402.5439pt>
+<Fig/chap5/error_curve_3_10.png, id=726, 521.0667pt x 402.5439pt>
 File: Fig/chap5/error_curve_3_10.png Graphic file (type png)
 
 <use Fig/chap5/error_curve_3_10.png>
@@ -975,7 +915,7 @@ Package pdftex.def Info: Fig/chap5/error_curve_3_10.png used on input line 117.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Fig/chap5/error_curve_3_var.png, id=785, 521.0667pt x 402.5439pt>
+<Fig/chap5/error_curve_3_var.png, id=727, 521.0667pt x 402.5439pt>
 File: Fig/chap5/error_curve_3_var.png Graphic file (type png)
 
 <use Fig/chap5/error_curve_3_var.png>
@@ -986,16 +926,31 @@ Package pdftex.def Info: Fig/chap5/error_curve_3_var.png used on input line 123
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./Chapters/chapter6_conclusions.tex [45 <./Fig/chap5/errors_polynomials_3_sa
-mples.png>] [46 <./Fig/chap5/errors_more_samples.png>] [47] [48 <./Fig/chap5/sc
-an_slices.png>] [49 <./Fig/chap5/insertions.png>] [50 <./Fig/chap5/error_curve_
-3_10.png>] [51 <./Fig/chap5/error_curve_3_var.png>]
+) (./Chapters/chapter6_conclusions.tex [42 <./Fig/chap5/errors_polynomials_3_sa
+mples.png>] [43 <./Fig/chap5/errors_more_samples.png>] [44 <./Fig/chap5/scan_sl
+ices_labels.png>] [45 <./Fig/chap5/insertions_labels.png>] [46 <./Fig/chap5/err
+or_curve_3_10.png>] [47 <./Fig/chap5/error_curve_3_var.png>]
 Chapter 5.
-[52
+[48
 
-] [53] [54]) (./main.bbl [55]
+] [49] [50]) (./main.bbl [51]
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `en'. Using the pattern for
+** loaded for the language `eng'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `eng'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `eng'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `eng'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `eng'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `eng'. Using the pattern for
 ** the default language instead.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
@@ -1006,13 +961,7 @@ Chapter 5.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `English'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `English'. Using the pattern for
-** the default language instead.
-[56
+[52
 
 ]
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
@@ -1022,25 +971,6 @@ Chapter 5.
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `eng'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `eng'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `eng'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `eng'. Using the pattern for
-** the default language instead.
-[57]
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `eng'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `eng'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
@@ -1052,7 +982,7 @@ Chapter 5.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
-[58]
+[53]
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
@@ -1060,41 +990,53 @@ Chapter 5.
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `en'. Using the pattern for
+** loaded for the language `English'. Using the pattern for
 ** the default language instead.
-[59]
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `English'. Using the pattern for
+** the default language instead.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
-[60])
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+[54]
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+[55]
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+[56])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 92.
- [61]
+ [57]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 92.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 162E42FE8D0DB2C6DA8B7E4F3CE3ACC1;3364.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: 4783F31B750DDD95283AE4E0F5AD086D;3284.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
  ) 
 Here is how much of TeX's memory you used:
- 10414 strings out of 494910
- 157728 string characters out of 6179836
- 257672 words of memory out of 5000000
- 13273 multiletter control sequences out of 15000+600000
+ 10391 strings out of 494910
+ 157425 string characters out of 6179836
+ 257085 words of memory out of 5000000
+ 13260 multiletter control sequences out of 15000+600000
  12284 words of font info for 45 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 36i,12n,43p,1171b,555s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,48p,1171b,555s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -1107,10 +1049,10 @@ s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.p
 fb>
-Output written on main.pdf (69 pages, 6258940 bytes).
+Output written on main.pdf (65 pages, 6264923 bytes).
 PDF statistics:
- 954 PDF objects out of 1000 (max. 8388607)
- 815 compressed objects within 9 object streams
- 207 named destinations out of 1000 (max. 500000)
- 536 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 891 PDF objects out of 1000 (max. 8388607)
+ 771 compressed objects within 8 object streams
+ 199 named destinations out of 1000 (max. 500000)
+ 523 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,8 +4,8 @@
 \BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.2}{Problem Formulation}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.3}{Thesis Contributions}{chapter.1}% 6
-\BOOKMARK [2][-]{subsection.1.3.1}{Needle Modeling by Minimization of Bending Energy}{section.1.3}% 7
-\BOOKMARK [2][-]{subsection.1.3.2}{Imaging-Agnostic Needle Tip Localization Algorithm}{section.1.3}% 8
+\BOOKMARK [2][-]{subsection.1.3.1}{Minimum Bending Energy Model}{section.1.3}% 7
+\BOOKMARK [2][-]{subsection.1.3.2}{Imaging-Agnostic Needle Localization Algorithm}{section.1.3}% 8
 \BOOKMARK [2][-]{subsection.1.3.3}{MRI Data Collection}{section.1.3}% 9
 \BOOKMARK [2][-]{subsection.1.3.4}{Slicer Module}{section.1.3}% 10
 \BOOKMARK [1][-]{section.1.4}{MRI Physics}{chapter.1}% 11
@@ -21,30 +21,29 @@
 \BOOKMARK [2][-]{subsection.2.4.1}{Coronal and Sagittal Plane Imaging}{section.2.4}% 21
 \BOOKMARK [2][-]{subsection.2.4.2}{Transverse Plane Imaging}{section.2.4}% 22
 \BOOKMARK [2][-]{subsection.2.4.3}{3D Imaging}{section.2.4}% 23
-\BOOKMARK [2][-]{subsection.2.4.4}{Non-Imaging Techniques}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.4}{Other Techniques}{section.2.4}% 24
 \BOOKMARK [0][-]{chapter.3}{Needle Model}{}% 25
-\BOOKMARK [1][-]{section.3.1}{Assumptions}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.1}{Assumptions and Definitions}{chapter.3}% 26
 \BOOKMARK [1][-]{section.3.2}{Beam Bending Energy}{chapter.3}% 27
 \BOOKMARK [1][-]{section.3.3}{Parametric Polynomial Space Curves}{chapter.3}% 28
 \BOOKMARK [1][-]{section.3.4}{Curve Fitting}{chapter.3}% 29
 \BOOKMARK [2][-]{subsection.3.4.1}{Cost Function}{section.3.4}% 30
 \BOOKMARK [2][-]{subsection.3.4.2}{Constraints}{section.3.4}% 31
-\BOOKMARK [2][-]{subsection.3.4.3}{Assumptions}{section.3.4}% 32
-\BOOKMARK [1][-]{section.3.5}{Software Implementation}{chapter.3}% 33
-\BOOKMARK [0][-]{chapter.4}{Needle Localization in MR Images}{}% 34
-\BOOKMARK [1][-]{section.4.1}{Software Architecture}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.1.1}{Simulated MRI Scanner}{section.4.1}% 36
-\BOOKMARK [2][-]{subsection.4.1.2}{Needle Tracking Module}{section.4.1}% 37
-\BOOKMARK [1][-]{section.4.2}{Experiment}{chapter.4}% 38
-\BOOKMARK [2][-]{subsection.4.2.1}{MRI Data Collection}{section.4.2}% 39
-\BOOKMARK [2][-]{subsection.4.2.2}{Needle Localization}{section.4.2}% 40
-\BOOKMARK [1][-]{section.4.3}{Results}{chapter.4}% 41
-\BOOKMARK [2][-]{subsection.4.3.1}{Needle Localization at a Single Timestep}{section.4.3}% 42
-\BOOKMARK [2][-]{subsection.4.3.2}{Needle Localization at Sequential Timesteps}{section.4.3}% 43
-\BOOKMARK [0][-]{chapter.5}{Discussion and Conclusion}{}% 44
-\BOOKMARK [1][-]{section.5.1}{Discussion}{chapter.5}% 45
-\BOOKMARK [2][-]{subsection.5.1.1}{MRI Experiment}{section.5.1}% 46
-\BOOKMARK [2][-]{subsection.5.1.2}{Needle Model}{section.5.1}% 47
-\BOOKMARK [1][-]{section.5.2}{Future Work}{chapter.5}% 48
-\BOOKMARK [1][-]{section.5.3}{Conclusion}{chapter.5}% 49
-\BOOKMARK [0][-]{chapter*.35}{References}{}% 50
+\BOOKMARK [1][-]{section.3.5}{Software Implementation}{chapter.3}% 32
+\BOOKMARK [0][-]{chapter.4}{Needle Localization in MR Images}{}% 33
+\BOOKMARK [1][-]{section.4.1}{Software Architecture}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.1.1}{Simulated MRI Scanner}{section.4.1}% 35
+\BOOKMARK [2][-]{subsection.4.1.2}{Needle Tracking Module}{section.4.1}% 36
+\BOOKMARK [1][-]{section.4.2}{Experiment}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.2.1}{MRI Data Collection}{section.4.2}% 38
+\BOOKMARK [2][-]{subsection.4.2.2}{Needle Localization}{section.4.2}% 39
+\BOOKMARK [1][-]{section.4.3}{Results}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.3.1}{Needle Localization at a Single Timestep}{section.4.3}% 41
+\BOOKMARK [2][-]{subsection.4.3.2}{Needle Localization at Sequential Timesteps}{section.4.3}% 42
+\BOOKMARK [0][-]{chapter.5}{Discussion and Conclusion}{}% 43
+\BOOKMARK [1][-]{section.5.1}{Discussion}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.1.1}{MRI Experiment}{section.5.1}% 45
+\BOOKMARK [2][-]{subsection.5.1.2}{Needle Model}{section.5.1}% 46
+\BOOKMARK [1][-]{section.5.2}{Future Work}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.3}{Conclusion}{chapter.5}% 48
+\BOOKMARK [0][-]{chapter*.30}{References}{}% 49

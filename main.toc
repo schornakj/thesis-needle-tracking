@@ -4,47 +4,46 @@
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Problem Formulation}{3}{section.1.2}
 \contentsline {section}{\numberline {1.3}Thesis Contributions}{4}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Needle Modeling by Minimization of Bending Energy}{4}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Imaging-Agnostic Needle Tip Localization Algorithm}{4}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.1}Minimum Bending Energy Model}{4}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Imaging-Agnostic Needle Localization Algorithm}{4}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}MRI Data Collection}{5}{subsection.1.3.3}
 \contentsline {subsection}{\numberline {1.3.4}Slicer Module}{5}{subsection.1.3.4}
-\contentsline {section}{\numberline {1.4}MRI Physics}{6}{section.1.4}
+\contentsline {section}{\numberline {1.4}MRI Physics}{5}{section.1.4}
 \contentsline {section}{\numberline {1.5}Tissue Phantoms}{7}{section.1.5}
-\contentsline {chapter}{\numberline {2}Review of Previous Work}{10}{chapter.2}
-\contentsline {section}{\numberline {2.1}Needle Geometry}{10}{section.2.1}
-\contentsline {section}{\numberline {2.2}Needle Modeling}{11}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Non-Holonomic Kinematics}{12}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Finite Element Models}{13}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Mechanical Models}{14}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Needle Steering}{15}{section.2.3}
-\contentsline {section}{\numberline {2.4}Needle Localization}{18}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Coronal and Sagittal Plane Imaging}{19}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Transverse Plane Imaging}{21}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}3D Imaging}{22}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}Non-Imaging Techniques}{23}{subsection.2.4.4}
-\contentsline {chapter}{\numberline {3}Needle Model}{25}{chapter.3}
-\contentsline {section}{\numberline {3.1}Assumptions}{27}{section.3.1}
-\contentsline {section}{\numberline {3.2}Beam Bending Energy}{29}{section.3.2}
-\contentsline {section}{\numberline {3.3}Parametric Polynomial Space Curves}{30}{section.3.3}
-\contentsline {section}{\numberline {3.4}Curve Fitting}{31}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Cost Function}{32}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Constraints}{33}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Assumptions}{34}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}Software Implementation}{34}{section.3.5}
-\contentsline {chapter}{\numberline {4}Needle Localization in MR Images}{38}{chapter.4}
-\contentsline {section}{\numberline {4.1}Software Architecture}{38}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Simulated MRI Scanner}{38}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Needle Tracking Module}{39}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Experiment}{40}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}MRI Data Collection}{41}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Needle Localization}{41}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Results}{42}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Needle Localization at a Single Timestep}{43}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Needle Localization at Sequential Timesteps}{44}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Discussion and Conclusion}{52}{chapter.5}
-\contentsline {section}{\numberline {5.1}Discussion}{52}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}MRI Experiment}{52}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Needle Model}{53}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Future Work}{54}{section.5.2}
-\contentsline {section}{\numberline {5.3}Conclusion}{55}{section.5.3}
-\contentsline {chapter}{References}{56}{chapter*.35}
+\contentsline {chapter}{\numberline {2}Review of Previous Work}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Needle Geometry}{8}{section.2.1}
+\contentsline {section}{\numberline {2.2}Needle Modeling}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Non-Holonomic Kinematics}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Finite Element Models}{11}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Mechanical Models}{12}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Needle Steering}{13}{section.2.3}
+\contentsline {section}{\numberline {2.4}Needle Localization}{16}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Coronal and Sagittal Plane Imaging}{17}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Transverse Plane Imaging}{18}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}3D Imaging}{19}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Other Techniques}{20}{subsection.2.4.4}
+\contentsline {chapter}{\numberline {3}Needle Model}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}Assumptions and Definitions}{24}{section.3.1}
+\contentsline {section}{\numberline {3.2}Beam Bending Energy}{26}{section.3.2}
+\contentsline {section}{\numberline {3.3}Parametric Polynomial Space Curves}{27}{section.3.3}
+\contentsline {section}{\numberline {3.4}Curve Fitting}{29}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Cost Function}{29}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Constraints}{30}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Software Implementation}{31}{section.3.5}
+\contentsline {chapter}{\numberline {4}Needle Localization in MR Images}{35}{chapter.4}
+\contentsline {section}{\numberline {4.1}Software Architecture}{35}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Simulated MRI Scanner}{35}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Needle Tracking Module}{36}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Experiment}{36}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}MRI Data Collection}{38}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Needle Localization}{38}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Results}{39}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Needle Localization at a Single Timestep}{40}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Needle Localization at Sequential Timesteps}{41}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Discussion and Conclusion}{48}{chapter.5}
+\contentsline {section}{\numberline {5.1}Discussion}{48}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}MRI Experiment}{48}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Needle Model}{49}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Future Work}{50}{section.5.2}
+\contentsline {section}{\numberline {5.3}Conclusion}{51}{section.5.3}
+\contentsline {chapter}{References}{52}{chapter*.30}

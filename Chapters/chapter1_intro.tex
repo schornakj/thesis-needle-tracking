@@ -1,40 +1,36 @@
 \chapter{Introduction}
 \label{sec:intro} % Always give a unique label
 \section{Motivation}
-Many interventional procedures rely on needle insertion, including biopsy and brachytherapy\cite{bomers_mri-guided_2012}. Accurate needle placement is a critical factor in the success of these procedures\cite{nath_dosimetric_2000, youk_missed_2007}. Deflection of the needle tip during insertion and variation in the mechanical properties of tissue can cause the needle to deviate from its expected trajectory and miss the target. This can be mitigated by using an alignment structure to aim the needle at the target and verifying that the correct position has been reached in post-operative imaging\cite{tokuda_-bore_2012}. Even with preoperative image-based planning and careful alignment with the target, several insertions may be required to attain the desired needle placement\cite{onik_ct-guided_1988}. 
+Many interventional procedures rely on needle insertion, including biopsy and brachytherapy\cite{bomers_mri-guided_2012}. Accurate needle placement is a critical factor in the success of these procedures\cite{nath_dosimetric_2000, youk_missed_2007}. Deflection of the needle tip during insertion and variation in the mechanical properties of tissue can cause the needle to deviate from its expected trajectory and miss the target. This can be mitigated by aligning the needle to the target using a fixed structure and verifying that the correct position has been reached in post-operative imaging\cite{tokuda_-bore_2012}. Even with preoperative image-based planning and careful alignment with the target, several insertions may be required to achieve the desired needle placement\cite{onik_ct-guided_1988}. 
 
-Live intra-operative imaging of the needle throughout insertion reduces error caused by needle deflection by allowing the surgeon to see if the needle is deviating from its trajectory and take corrective action. Ultrasound (US) and Magnetic Resonance Imaging (MRI) are preferred imaging modalities. While US is portable and hand-steerable, MRI offers superior resolution of soft tissues compared to both US and CT\cite{weiss_mr-guided_2008}. Manually-controlled image-guided needle insertion is still a challenging task. Under MRI guidance the confined space of the scanner bore, illustrated in Figure \ref{fig:mri_intraoperative}, limits the surgeon's visibility and range of motion\cite{damico_transperineal_2000, menard_mri_nodate}.
+Live intra-operative imaging of the needle during insertion reduces error caused by needle deflection by allowing the surgeon to see if the needle is deviating from its trajectory and take corrective action. Ultrasound (US) and Magnetic Resonance Imaging (MRI) are preferred imaging modalities. While US is portable and hand-steerable, MRI offers superior resolution of soft tissues compared to both US and CT\cite{weiss_mr-guided_2008}. Even with intraoperative imaging, manually-controlled needle insertion is  a challenging task. As shown in Figure \ref{fig:mri_intraoperative}, the confined space of the MRI scanner bore  limits the surgeon's visibility and range of motion\cite{menard_mri_}.
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap1/tokuda_action_shot.png}
-\caption{A manual MRI-guided biopsy in progress (from Tokuda, 2012 \cite{tokuda_-bore_2012}).}
+\caption{A manual MRI-guided biopsy in progress (from Tokuda, 2012).}
 \label{fig:mri_intraoperative}
 \end{figure}
 
-Robotically-controlled needle insertion solves some of the challenges of live intraoperative MRI imaging by reducing the clinician's workload and moving them out of the scanner bore. (CITE!)
+Robotically-controlled needle insertion solves some of the challenges of live intraoperative MRI imaging by reducing the clinician's workload and moving them out of the scanner bore. Using live imaging, an insertion robot can correct for unmodeled tip deflection and keep the needle on its expected trajectory, improving the accuracy of needle placement.
 
-Using live imaging, an insertion robot can correct for unmodeled tip deflection and keep the needle on its expected trajectory, improving the success rates of biopsies and other needle-based interventions. (CITE!)
-
-Several collaborative needle insertion robots have been demonstrated. These allow the surgeon to control the rate of needle insertion while the robot controls the orientation of the needle. (CITE!)
-
-Previous work has shown that closed-loop control of MRI\cite{patel_closed-loop_2015} and US\cite{vrooijink_needle_2014} coupled with image processing techniques for needle localization can track a needle tip during insertion with a useful degree of accuracy.
+Previous work has shown that closed-loop control of MRI\cite{patel_closed-loop_2015} and US\cite{vrooijink_needle_2014} coupled with image analysis for needle localization can track the needle tip during insertion with a useful degree of accuracy.
 
 \section{Problem Formulation}
 \label{sec:problem_formulation}
-A key requirement in closed-loop image-guided needle insertion is the accurate measurement of the 6-degree-of-freedom pose of the needle tip using data from the imaging system. Accurate tip localization is required for the needle controller to determine the correct control input which minimizes the error between the current needle tip pose and the desired trajectory. Searching for the needle in each image on an individual basis introduces errors due to imaging artifacts, noise, and structures near the needle, contributing to reduced tip localization accuracy. A needle model that combines data from real-time imaging with the kinematics of the insertion platform and the mechanical properties of the needle would allow accurate estimation of the pose of the needle tip while requiring comparatively few observations of the needle position.
+A key requirement for closed-loop image-guided needle insertion is the accurate measurement of the 6-degree-of-freedom pose of the needle tip using data from the imaging system. Accurate tip localization is required for the needle controller to determine the correct control input to minimize the error between the current needle tip pose and the desired trajectory. Searching for the needle in each image on an individual basis introduces errors due to imaging artifacts, noise, and anatomical features near the needle, contributing to reduced tip localization accuracy. A needle model that could combine data from real-time imaging, from the robotic insertion platform, and the mechanical properties of the needle would allow accurate estimation of the pose of the needle tip from sparse observations of the needle position.
 
 % - TODO: (Fischer) Why is accurate localization important?
 
 \section{Thesis Contributions}
 
-\subsection{Needle Modeling by Minimization of Bending Energy}
-This thesis presents an approach to needle modeling that uses the mechanical bending properties of the needle, the pose of the needle base, and a set of observed needle positions along the needle shaft to find a configuration of the needle that minimizes its bending energy while meeting the observed constraints. In this model is represented by a three-dimensional parametric polynomial curve. 
+\subsection{Minimum Bending Energy Model}
+This thesis presents an approach to needle modeling that uses the mechanical bending properties of the needle, the pose of the needle base, and a set of observed needle positions along the needle shaft to find a configuration of the needle that minimizes its bending energy while meeting the observed constraints. In this model the needle is represented by a three-dimensional parametric polynomial curve. 
 
-\subsection{Imaging-Agnostic Needle Tip Localization Algorithm}
-The needle model provides continuous needle pose estimates along its shaft, which can be used to plan imaging to observe the needle position after motion. The expected position of the needle informs the search for the actual position of the needle in received images, which reduces localization error caused by noise and other shapes near the needle. Since the needle model is updated using a set of positions along the needle shaft instead of the position of the needle tip, updates can be performed using imaging in planes transverse to the needle rather than imaging in the coronal and sagittal planes. This mitigates the risk of loss of needle tracking during insertion.
+\subsection{Imaging-Agnostic Needle Localization Algorithm}
+The needle model provides continuous needle pose estimates along its shaft, which can be used to plan imaging to observe the needle position after motion. The expected position of the needle informs the search for the actual position of the needle in received images, which reduces localization error caused by noise near the needle. Since the needle model is updated using a set of positions along the needle shaft instead of the position of the needle tip, updates can be performed using imaging in planes transverse to the needle rather than imaging in the coronal and sagittal planes. This mitigates the risk of loss of needle tracking during insertion.
 
 \subsection{MRI Data Collection}
-MRI scans were collected depicting a biopsy needle being inserted into a gelatin tissue phantom. An alignment structure restricted the pose of the needle base during insertion, allowing each scan at a regular insertion interval to be associated with a needle pose.
+MRI scans were collected depicting the insertion of a biopsy needle into a gelatin tissue phantom. An alignment structure restricted the pose of the needle base during insertion, allowing scans taken at at regular insertion interval to be associated with needle poses.
 
 \subsection{Slicer Module}
 An extension for 3D Slicer, an open-source medical imaging program\cite{_3d_, fedorov_3d_2012}, was created to evaluate the needle model when applied to the MRI dataset. The user interacts with the needle model through the Needle Tracking module, which accepts inputs for the current needle base pose and the current 3D scan in the MRI dataset and returns polynomial coefficients representing the current state of the needle. A supporting MRI Reslicer module converts the 3D MRI scans into 2D slices at specified depths, which simulates part of the functionality of an MRI machine.
@@ -47,13 +43,13 @@ An extension for 3D Slicer, an open-source medical imaging program\cite{_3d_, fe
 
 Magnetic Resonance Imaging (MRI) is used to image material containing hydrogen ions, or protons, such as human tissue. The strong magnetic field of the MRI machine causes the free protons to align along the axis of the field. A pulse of radiofrequency (RF) radiation excites the protons, which subsequently emit RF energy as they return to a lower-energy state. The emitted energy is measured by the scanner to generate and image of the tissue based on the intensity of the return from different areas.
 
-Performing an MRI scan on a material that does not contain any free protons, such as plastic or metal, produces a dark void in the image. Metal objects distort the magnetic field, producing susceptability artifacts around the objects. The shape and extent of the artifact depends on the parameters of the MRI scan sequence, the shape of the object, and the material. Needles and wires behave like antennae in the MRI environment, so they produce imaging artifacts around their tips\cite{lewin_needle_1996}. Determining the position of the needle using its imaging artifact is the basis for needle tracking in MRI\cite{song_biopsy_2012}.
+Performing an MRI scan on a material that does not contain any free protons, such as plastic or metal, produces a dark void in the image\cite{lewin_needle_1996}. Metal objects distort the magnetic field, producing susceptability artifacts around the objects. The shape and extent of each artifact depends on the parameters of the MRI scan sequence the the shape and composition of the object. Needles and wires behave like antennae in the MRI environment, so they produce imaging artifacts around their tips. Determining the position of the needle using its imaging artifact is the basis for needle tracking in MRI\cite{song_biopsy_2012}.
 
-\begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
-\caption{MRI scan of a pelvic region undergoing biopsy.}
-\label{fig:mri_human}
-\end{figure}
+%\begin{figure}[h]
+%\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+%\caption{MRI scan of a pelvic region undergoing biopsy.}
+%\label{fig:mri_human}
+%\end{figure}
 
 \begin{figure}[h]
 \includegraphics[width=1.0\textwidth]{Fig/chap1/mri_phantom.png}
@@ -63,7 +59,7 @@ Performing an MRI scan on a material that does not contain any free protons, suc
 
 
 \section{Tissue Phantoms}
-Synthetic tissue phantoms are often used during needle insertion studies instead of ex-vivo tissue specimens. These phantoms are designed so their mechanical properties reflect those of human tissue. They offer several benefits over real tissue, especially in the context of benchtop laboratory experiments.
+Synthetic tissue phantoms are often used during needle insertion studies instead of ex-vivo tissue specimens. These phantoms are manufactured so their mechanical properties reflect those of human tissue. They offer several benefits over real tissue, especially in the context of benchtop laboratory experiments.
 \begin{enumerate}
 \item Phantoms made of gelatin or plastic are transparent, so vision-based methods can be used for needle tracking or for validation of other imaging modalities.
 
@@ -75,11 +71,11 @@ Synthetic tissue phantoms are often used during needle insertion studies instead
 \end{enumerate}
 
 
-\begin{figure}[h]
-\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
-\caption{Gelatin tissue phantom similar to the ones used in this thesis.}
-\label{fig:gelatin_phantom}
-\end{figure}
+%\begin{figure}[h]
+%\includegraphics[width=1.0\textwidth]{Fig/placeholder.png}
+%\caption{Gelatin tissue phantom similar to the ones used in this thesis.}
+%\label{fig:gelatin_phantom}
+%\end{figure}
 
 % \section{Medical Image Processing Software}
 % \subsection{3D Slicer}
